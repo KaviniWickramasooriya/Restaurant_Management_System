@@ -56,7 +56,7 @@ public class Home extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, 40));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 90, 40));
 
         btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
@@ -107,6 +107,8 @@ public class Home extends javax.swing.JFrame {
 
     private void btnAddReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddReservationActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        new AddReservation().setVisible(true);
     }//GEN-LAST:event_btnAddReservationActionPerformed
 
     /**
