@@ -7,20 +7,20 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 /**
  *
- * @author Kavini
+ * @author ASUS
  */
 public class DbOperations {
     public static void setDataOrDelete(String Query, String msg){
-        try{
-            Connection con = ConnectionProvider.getCon();
-            Statement st = con.createStatement();
-            st.executeUpdate(Query);
-            if(!msg.equals(""))
-                JOptionPane.showMessageDialog(null, msg);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, e,"Message",JOptionPane.ERROR_MESSAGE);
-        }
+    try{
+        Connection con = ConnectionProvider.getCon();
+        Statement st = con.createStatement();
+        st.executeUpdate(Query);
+        if(!msg.equals(""))
+            JOptionPane.showMessageDialog(null, msg);
+    }
+    catch(Exception e){
+        JOptionPane.showMessageDialog(null, e,"Message",JOptionPane.ERROR_MESSAGE);
+    }
     }
     
     public static ResultSet getData(String query){
@@ -31,8 +31,8 @@ public class DbOperations {
             return rs;
         }
         catch(Exception e){
-          JOptionPane.showMessageDialog(null, e,"Message",JOptionPane.ERROR_MESSAGE);
-          return null;
-        }
+        JOptionPane.showMessageDialog(null, e,"Message",JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
     }
 }

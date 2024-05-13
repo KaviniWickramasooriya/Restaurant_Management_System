@@ -8,26 +8,26 @@ import model.User;
 import java.sql.*;
 /**
  *
- * @author Kavini
+ * @author ASUS
  */
 public class UserDao {
     public static void save(User user){
         String query = "insert into user(name,email,mobile,address,password,security,answer,status) values('"+user.getName()+"','"+user.getEmail()+"','"+user.getMobile()+"','"+user.getAddress()+"','"+user.getPassword()+"','"+user.getSecurity()+"','"+user.getAnswer()+"','false')";
-        DbOperations.setDataOrDelete(query, "Registered Successfully !");
+        DbOperations.setDataOrDelete(query, "Registered Successfully !! Wait for Admin Approval ! ");
     }
     
     public static User login(String email, String password){
         User user = null;
         try{
-            ResultSet rs = DbOperations.getData("select *from user where='"+email+"' and password='"+password+"'");
+            ResultSet rs = DbOperations.getData("select * from user where email='"+email+"' and password='"+password+"'");
             while(rs.next()){
                 user = new User();
                 user.setStatus(rs.getString("status"));
             }
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }  
+            JOptionPane.showMessageDialog(null, e);
+        }
         return user;
     }
 }

@@ -8,7 +8,7 @@ import model.User;
 import dao.UserDao;
 /**
  *
- * @author Kavini
+ * @author ASUS
  */
 public class SignUp extends javax.swing.JFrame {
 
@@ -118,11 +118,6 @@ public class SignUp extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 432, 72, -1));
 
         txtName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNameKeyReleased(evt);
@@ -232,10 +227,10 @@ public class SignUp extends javax.swing.JFrame {
         getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(838, 508, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupsmall.png"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 280));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 280, 280));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, -100, 1460, 840));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1540, 930));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -301,22 +296,17 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAnswerKeyReleased
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        int a = JOptionPane.showConfirmDialog(null, "Do you really want to close the application ?","Select",JOptionPane.YES_NO_OPTION);
-        if(a==0)
-        {
+        // TODO add your handling code here:
+        int a= JOptionPane.showConfirmDialog(null, "Do you want to close application?", "Select", JOptionPane.YES_NO_OPTION);
+        if(a==0){
             System.exit(0);
         }
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
         setVisible(false);
-        new Login().setVisible(true);
+        new LogIn().setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
     
     /**
      * @param args the command line arguments

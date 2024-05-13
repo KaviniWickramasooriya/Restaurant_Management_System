@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Kavini
+ * @author ASUS
  */
 public class User {
     private int id;
