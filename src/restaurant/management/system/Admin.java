@@ -145,6 +145,8 @@ public class Admin extends javax.swing.JFrame {
 
     private void btnTablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablesActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        new ManageTables().setVisible(true);
     }//GEN-LAST:event_btnTablesActionPerformed
 
     /**
