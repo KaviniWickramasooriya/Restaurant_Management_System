@@ -107,6 +107,8 @@ public class Home extends javax.swing.JFrame {
 
     private void btnAddReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddReservationActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        new AddReservation().setVisible(true);
     }//GEN-LAST:event_btnAddReservationActionPerformed
 
     /**

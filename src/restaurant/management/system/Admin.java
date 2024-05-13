@@ -36,8 +36,9 @@ public class Admin extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnReservations = new javax.swing.JButton();
+        btnBookings = new javax.swing.JButton();
         btnVerifyUsers = new javax.swing.JButton();
+        btnTables = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,17 +77,17 @@ public class Admin extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 98, 472, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/restaurant.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, -1, 460));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, 460));
 
-        btnReservations.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnReservations.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view edit delete product.png"))); // NOI18N
-        btnReservations.setText("Reservations");
-        btnReservations.addActionListener(new java.awt.event.ActionListener() {
+        btnBookings.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBookings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view edit delete product.png"))); // NOI18N
+        btnBookings.setText("Bookings");
+        btnBookings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReservationsActionPerformed(evt);
+                btnBookingsActionPerformed(evt);
             }
         });
-        getContentPane().add(btnReservations, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 160, -1));
+        getContentPane().add(btnBookings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 150, -1));
 
         btnVerifyUsers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVerifyUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify users.png"))); // NOI18N
@@ -96,8 +97,19 @@ public class Admin extends javax.swing.JFrame {
                 btnVerifyUsersActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVerifyUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 100, 160, -1));
+        getContentPane().add(btnVerifyUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 160, -1));
 
+        btnTables.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTables.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/category.png"))); // NOI18N
+        btnTables.setText("Tables");
+        btnTables.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTablesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 100, 150, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home-background-image.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -121,15 +133,19 @@ public class Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnReservationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservationsActionPerformed
+    private void btnBookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnReservationsActionPerformed
+    }//GEN-LAST:event_btnBookingsActionPerformed
 
     private void btnVerifyUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyUsersActionPerformed
         // TODO add your handling code here:
         setVisible(false);
         new VerifyUsers().setVisible(true);
     }//GEN-LAST:event_btnVerifyUsersActionPerformed
+
+    private void btnTablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTablesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,9 +183,10 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBookings;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnReservations;
+    private javax.swing.JButton btnTables;
     private javax.swing.JButton btnVerifyUsers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
