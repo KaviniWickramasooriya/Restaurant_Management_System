@@ -28,7 +28,7 @@ public class LogIn extends javax.swing.JFrame {
     txtEmail.setText("");
     txtPassword.setText("");
     btnLogin.setEnabled(false);
-            }
+    }
     
     public void validateFields(){
         
@@ -163,24 +163,34 @@ public class LogIn extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        String email = txtEmail.getText();
-        String password = txtPassword.getText();
-        User user = null;
-        user = UserDao.login(email,password);
-        if(user == null){
-            JOptionPane.showMessageDialog(null,"<html><b style=\"color:red\">Incorrect Username or Password</b></html>","Message",JOptionPane.ERROR_MESSAGE);
-             
-        } else{
-            if(user.getStatus().equals("false")){
+        // Get user input
+    String email = txtEmail.getText();
+    String password = txtPassword.getText();
+   
+    // Check if the user is an admin
+    if (email.equals("admin@gmail.com") && password.equals("admin")) {
+        // Admin login successful
+        setVisible(false);
+        new Admin(email).setVisible(true);
+    } else {
+        // Check for regular user login
+        User user = UserDao.login(email, password);
+        if (user == null) {
+            // Incorrect username or password for regular users
+            JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Username or Password</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (user.getStatus().equals("false")) {
+                // User needs admin approval
                 ImageIcon icon = new ImageIcon("src/popupicon/wait.png");
-                JOptionPane.showMessageDialog(null,"<html><b>Wait for Admin Approval</b></html>","Message",JOptionPane.INFORMATION_MESSAGE,icon );
+                JOptionPane.showMessageDialog(null, "<html><b>Wait for Admin Approval</b></html>", "Message", JOptionPane.INFORMATION_MESSAGE, icon);
                 clear();
-            }
-            if(user.getStatus().equals("true")){
+            } else {
                 setVisible(false);
                 new Home(email).setVisible(true);
+               
             }
         }
+    }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnForgetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgetPasswordActionPerformed
