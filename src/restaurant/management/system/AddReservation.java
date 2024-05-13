@@ -65,7 +65,7 @@ public class AddReservation extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(654, 14, -1, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Name");
@@ -94,23 +94,28 @@ public class AddReservation extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Time");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, -1, -1));
-        getContentPane().add(SpinnerGuests, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 240, -1));
+        getContentPane().add(SpinnerGuests, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 240, -1));
 
-        getContentPane().add(ComboBoxTableNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 240, -1));
-        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 240, -1));
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 240, -1));
+        getContentPane().add(ComboBoxTableNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 240, -1));
+        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 240, -1));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 240, -1));
 
         txtMobile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMobileActionPerformed(evt);
             }
         });
-        getContentPane().add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 240, -1));
+        getContentPane().add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 240, -1));
 
         btnCheckAvailability.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCheckAvailability.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/place order.png"))); // NOI18N
         btnCheckAvailability.setText("Check Availability");
-        getContentPane().add(btnCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 190, 30));
+        btnCheckAvailability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckAvailabilityActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 190, 30));
 
         btnSave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
@@ -120,7 +125,7 @@ public class AddReservation extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, -1, -1));
+        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/small-page-background.png"))); // NOI18N
         jLabel10.setText("jLabel10");
@@ -131,6 +136,7 @@ public class AddReservation extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtMobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMobileActionPerformed
@@ -140,6 +146,10 @@ public class AddReservation extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnCheckAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckAvailabilityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCheckAvailabilityActionPerformed
 
     /**
      * @param args the command line arguments

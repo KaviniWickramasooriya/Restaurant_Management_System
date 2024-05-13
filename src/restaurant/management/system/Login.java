@@ -30,8 +30,7 @@ public class LogIn extends javax.swing.JFrame {
     btnLogin.setEnabled(false);
     }
     
-    public void validateFields(){
-        
+    public void validateFields(){        
         String email = txtEmail.getText();
         String password = txtPassword.getText();
         if(email.matches(emailPattern) && !password.equals("")){
