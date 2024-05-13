@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 //import static javax.swing.JOptionPane.showMessageDialog;
 /**
  *
- * @author ASUS
+ * @author Kavini
  */
 public class LogIn extends javax.swing.JFrame {
     public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";

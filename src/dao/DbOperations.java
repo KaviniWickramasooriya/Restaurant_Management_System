@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 /**
  *
- * @author ASUS
+ * @author Kavini
  */
 public class DbOperations {
     public static void setDataOrDelete(String Query, String msg){

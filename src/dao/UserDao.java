@@ -8,7 +8,7 @@ import model.User;
 import java.sql.*;
 /**
  *
- * @author ASUS
+ * @author Kavini
  */
 public class UserDao {
     public static void save(User user){

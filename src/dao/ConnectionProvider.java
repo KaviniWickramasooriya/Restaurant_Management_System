@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author ASUS
+ * @author Kavini
  */
 public class ConnectionProvider {
     public static Connection getCon (){

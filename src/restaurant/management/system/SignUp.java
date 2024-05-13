@@ -8,7 +8,7 @@ import model.User;
 import dao.UserDao;
 /**
  *
- * @author ASUS
+ * @author Kavini
  */
 public class SignUp extends javax.swing.JFrame {
 

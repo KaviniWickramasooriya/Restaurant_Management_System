@@ -6,7 +6,7 @@ package restaurant.management.system;
 
 /**
  *
- * @author ASUS
+ * @author Kavini
  */
 public class RestaurantManagementSystem {
 
