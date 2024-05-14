@@ -34,7 +34,7 @@ public class AddReservation extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -65,13 +65,13 @@ public class AddReservation extends javax.swing.JFrame {
         jLabel1.setText("New Reservation");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 14, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, 30));
+        getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Name");
@@ -146,10 +146,10 @@ public class AddReservation extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void txtMobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMobileActionPerformed
         // TODO add your handling code here:
@@ -202,8 +202,8 @@ public class AddReservation extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBoxTableNo;
     private javax.swing.JSpinner SpinnerGuests;
     private javax.swing.JButton btnCheckAvailability;
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;

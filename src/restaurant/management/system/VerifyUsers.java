@@ -71,7 +71,7 @@ public class VerifyUsers extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify users.png"))); // NOI18N
         jLabel1.setText("Verify Users");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 30, 140, 38));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 140, 38));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,12 +79,12 @@ public class VerifyUsers extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 30, 35, 35));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 35, 35));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Search");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 139, 87, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 87, -1));
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -92,7 +92,7 @@ public class VerifyUsers extends javax.swing.JFrame {
                 txtEmailKeyReleased(evt);
             }
         });
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 140, 306, -1));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 306, -1));
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -110,7 +110,7 @@ public class VerifyUsers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 199, 1244, 440));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 570, 220));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));

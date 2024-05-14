@@ -40,7 +40,7 @@ public class ManageTables extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -84,13 +84,13 @@ public class ManageTables extends javax.swing.JFrame {
         });
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 120, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, 30));
+        getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 23, 30, -1));
 
         btnSave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
@@ -137,15 +137,15 @@ public class ManageTables extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/small-page-background.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
@@ -216,8 +216,8 @@ public class ManageTables extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
