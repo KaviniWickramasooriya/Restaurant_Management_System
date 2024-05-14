@@ -5,6 +5,9 @@
 package restaurant.management.system;
 //import com.toedter.calendar.JDateChooser;
 //import java.util.Date;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kavini
@@ -148,7 +151,11 @@ public class AddReservation extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            setVisible(false);
+            new Admin().setVisible(true);
+        }
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void txtMobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMobileActionPerformed

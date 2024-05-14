@@ -4,6 +4,7 @@
  */
 package restaurant.management.system;
 import dao.ReservationtableDao;
+import javax.swing.JOptionPane;
 import model.Reservationtable;
 /**
  *
@@ -144,7 +145,11 @@ public class ManageTables extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            setVisible(false);
+            new Admin().setVisible(true);
+        }
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
