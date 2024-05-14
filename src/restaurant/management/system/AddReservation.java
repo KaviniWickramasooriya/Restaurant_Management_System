@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurant.management.system;
-
+//import com.toedter.calendar.JDateChooser;
+//import java.util.Date;
 /**
  *
  * @author Kavini
@@ -15,6 +16,9 @@ public class AddReservation extends javax.swing.JFrame {
      */
     public AddReservation() {
         initComponents();
+        
+        // Set current date for date picker
+        //dateChooser.setDate(new Date());
     }
     
     /**
@@ -45,6 +49,8 @@ public class AddReservation extends javax.swing.JFrame {
         txtMobile = new javax.swing.JTextField();
         btnCheckAvailability = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
 
         jLabel6.setText("jLabel6");
@@ -125,7 +131,13 @@ public class AddReservation extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
+        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 90, 30));
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 240, -1));
+
+        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 240, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/small-page-background.png"))); // NOI18N
         jLabel10.setText("jLabel10");
@@ -192,6 +204,8 @@ public class AddReservation extends javax.swing.JFrame {
     private javax.swing.JButton btnCheckAvailability;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton jButton1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
