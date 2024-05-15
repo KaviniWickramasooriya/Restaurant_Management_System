@@ -121,7 +121,7 @@ public class Admin extends javax.swing.JFrame {
         int a= JOptionPane.showConfirmDialog(null, "Do you really want to Logout ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
             setVisible(false);
-            new LogIn().setVisible(true);
+            new SignIn().setVisible(true);
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 

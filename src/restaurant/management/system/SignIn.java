@@ -3,23 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurant.management.system;
-import javax.swing.JOptionPane;
-import model.User;
+
 import dao.UserDao;
 import javax.swing.ImageIcon;
-//import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JOptionPane;
+import model.User;
+
 /**
  *
  * @author Kavini
  */
-public class LogIn extends javax.swing.JFrame {
+public class SignIn extends javax.swing.JFrame {
     public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
-    
 
     /**
-     * Creates new form LogIn
+     * Creates new form SignIn
      */
-    public LogIn() {
+    public SignIn() {
         initComponents();
         btnLogin.setEnabled(false);
     }
@@ -39,6 +39,7 @@ public class LogIn extends javax.swing.JFrame {
             btnLogin.setEnabled(false);
         }
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,34 +50,25 @@ public class LogIn extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        btnForgetPassword = new javax.swing.JButton();
         btnSignUp = new javax.swing.JButton();
+        btnForgetPassword = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(1366, 768));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("LogIn");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 164, 62));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Email : ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 83, 20));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Password : ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, 40));
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -98,6 +90,14 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 351, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Password : ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, 40));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Email : ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 83, 20));
 
         btnLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
@@ -129,6 +129,15 @@ public class LogIn extends javax.swing.JFrame {
         });
         getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 280, -1, -1));
 
+        btnSignUp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSignUp.setText("Sign Up");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 330, -1, -1));
+
         btnForgetPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnForgetPassword.setText("Forget  Password ?");
         btnForgetPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -138,63 +147,60 @@ public class LogIn extends javax.swing.JFrame {
         });
         getContentPane().add(btnForgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, -1, -1));
 
-        btnSignUp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSignUp.setText("Sign Up");
-        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignUpActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 330, -1, -1));
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        jLabel5.setPreferredSize(new java.awt.Dimension(1407, 750));
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 1360, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
+        validateFields();
+    }//GEN-LAST:event_txtEmailKeyReleased
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
 
+    private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
+        validateFields();
+    }//GEN-LAST:event_txtPasswordKeyReleased
+
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         // Get user input
-    String email = txtEmail.getText();
-    String password = txtPassword.getText();
-   
-    // Check if the user is an admin
-    if (email.equals("admin@gmail.com") && password.equals("admin")) {
-        // Admin login successful
-        setVisible(false);
-        new Admin(email).setVisible(true);
-    } else {
-        // Check for regular user login
-        User user = UserDao.login(email, password);
-        if (user == null) {
-            // Incorrect username or password for regular users
-            JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Username or Password</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+        String email = txtEmail.getText();
+        String password = txtPassword.getText();
+
+        // Check if the user is an admin
+        if (email.equals("admin@gmail.com") && password.equals("admin")) {
+            // Admin login successful
+            setVisible(false);
+            new Admin(email).setVisible(true);
         } else {
-            if (user.getStatus().equals("false")) {
-                // User needs admin approval
-                ImageIcon icon = new ImageIcon("src/popupicon/wait.png");
-                JOptionPane.showMessageDialog(null, "<html><b>Wait for Admin Approval</b></html>", "Message", JOptionPane.INFORMATION_MESSAGE, icon);
-                clear();
+            // Check for regular user login
+            User user = UserDao.login(email, password);
+            if (user == null) {
+                // Incorrect username or password for regular users
+                JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Username or Password</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
             } else {
-                setVisible(false);
-                new Home(email).setVisible(true);
-               
+                if (user.getStatus().equals("false")) {
+                    // User needs admin approval
+                    ImageIcon icon = new ImageIcon("src/popupicon/wait.png");
+                    JOptionPane.showMessageDialog(null, "<html><b>Wait for Admin Approval</b></html>", "Message", JOptionPane.INFORMATION_MESSAGE, icon);
+                    clear();
+                } else {
+                    setVisible(false);
+                    new Home(email).setVisible(true);
+
+                }
             }
         }
-    }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void btnForgetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgetPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnForgetPasswordActionPerformed
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clear();
+    }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         int a= JOptionPane.showConfirmDialog(null, "Do you want to close application?", "Select", JOptionPane.YES_NO_OPTION);
@@ -203,22 +209,14 @@ public class LogIn extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
-        validateFields();
-    }//GEN-LAST:event_txtEmailKeyReleased
-
-    private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
-        validateFields();
-    }//GEN-LAST:event_txtPasswordKeyReleased
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        clear();
-    }//GEN-LAST:event_btnClearActionPerformed
-
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         setVisible(false);
         new SignUp().setVisible(true);
     }//GEN-LAST:event_btnSignUpActionPerformed
+
+    private void btnForgetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgetPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnForgetPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,23 +235,20 @@ public class LogIn extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LogIn().setVisible(true);
+                new SignIn().setVisible(true);
             }
         });
     }
@@ -268,7 +263,6 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables

@@ -306,7 +306,7 @@ public class SignUp extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         setVisible(false);
-        new LogIn().setVisible(true);
+        new SignIn().setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
     
     /**
