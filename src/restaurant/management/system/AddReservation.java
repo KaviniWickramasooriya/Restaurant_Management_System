@@ -15,6 +15,8 @@ import java.sql.ResultSet;
  * @author Kavini
  */
 public class AddReservation extends javax.swing.JFrame {
+    public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
+    public String mobilePattern = "^[0-9]*$";
 
     /**
      * Creates new form AddReservation
@@ -24,6 +26,14 @@ public class AddReservation extends javax.swing.JFrame {
         
     }
     
+    public void validateFields(){
+        String email = txtEmail.getText();
+        String mobile = txtMobile.getText();
+        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10)
+            btnSave.setEnabled(true);
+        else
+            btnSave.setEnabled(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,18 +117,19 @@ public class AddReservation extends javax.swing.JFrame {
         SpinnerGuests.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
         getContentPane().add(SpinnerGuests, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 240, -1));
 
-        ComboBoxTableNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxTableNoActionPerformed(evt);
-            }
-        });
         getContentPane().add(ComboBoxTableNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 240, -1));
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 240, -1));
+
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 240, -1));
 
-        txtMobile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMobileActionPerformed(evt);
+        txtMobile.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMobileKeyReleased(evt);
             }
         });
         getContentPane().add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 240, -1));
@@ -161,23 +172,20 @@ public class AddReservation extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void txtMobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMobileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMobileActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         // Save reservation to the database.
         String name = txtName.getText();
         String email = txtEmail.getText();
         String mobile = txtMobile.getText();
-        int guests = (int) SpinnerGuests.getValue();
+        //int guests = (int) SpinnerGuests.getValue();
+        String guests = ((String) SpinnerGuests.getValue());
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
         String time = txtTime.getText();
 
         // Validation
-        if (name.isEmpty() || email.isEmpty() || mobile.isEmpty() || date == null || time.isEmpty()) {
+        if (name.isEmpty() || email.isEmpty() || mobile.isEmpty() || date == null ) {
             JOptionPane.showMessageDialog(null, "All fields are required!");
             return;
         }
@@ -197,7 +205,7 @@ public class AddReservation extends javax.swing.JFrame {
         Date date = jDateChooser2.getDate();
         String time = txtTime.getText();
 
-        if (tableNo == null || date == null || time.isEmpty()) {
+        if (tableNo == null || date == null) {
             JOptionPane.showMessageDialog(null, "Please select a table, date, and time.");
             return;
         }
@@ -234,9 +242,15 @@ public class AddReservation extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formComponentShown
 
-    private void ComboBoxTableNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTableNoActionPerformed
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBoxTableNoActionPerformed
+        validateFields();
+    }//GEN-LAST:event_txtEmailKeyReleased
+
+    private void txtMobileKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMobileKeyReleased
+        // TODO add your handling code here:
+        validateFields();
+    }//GEN-LAST:event_txtMobileKeyReleased
 
     /**
      * @param args the command line arguments

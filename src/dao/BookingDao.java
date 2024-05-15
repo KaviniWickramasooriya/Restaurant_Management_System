@@ -22,11 +22,17 @@ public class BookingDao {
     public static ArrayList<Booking> getAllRecords(){
         ArrayList<Booking> arrayList = new ArrayList<>();
         try{
-            ResultSet rs = DbOperations.getData("select * from reservationtable");
+            ResultSet rs = DbOperations.getData("select * from booking");
             while(rs.next()){
                 Booking booking = new Booking();
                 booking.setId(rs.getInt("id"));
                 booking.setName(rs.getString("name"));
+                booking.setEmail(rs.getString("email"));
+                booking.setMobile(rs.getString("mobile"));
+                booking.setGuests(rs.getString("guests"));
+                booking.setTableNo(rs.getString("tableNo"));
+                booking.setDate(rs.getString("date"));
+                booking.setTime(rs.getString("time"));
                 arrayList.add(booking);
             }
         }
@@ -34,6 +40,11 @@ public class BookingDao {
             JOptionPane.showMessageDialog(null, e);
         }
         return arrayList;    
+    }
+    
+    public static void update(Booking booking){
+        String query = "update booking set name ='"+booking.getName()+"',email ='"+booking.getEmail()+"',mobile ='"+booking.getMobile()+"',guests ='"+booking.getGuests()+"',mobile ='"+booking.getMobile()+"',tableNo ='"+booking.getTableNo()+"',date ='"+booking.getDate()+"',time ='"+booking.getTime()+"' where id ='"+booking.getId()+"'";
+        DbOperations.setDataOrDelete(query, "Booking Updated Successfully !");
     }
     
     public static void delete(String id){
