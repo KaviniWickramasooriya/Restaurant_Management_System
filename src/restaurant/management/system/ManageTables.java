@@ -4,8 +4,13 @@
  */
 package restaurant.management.system;
 import dao.ReservationtableDao;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.util.*;
+import javax.swing.table.TableModel;
 import model.Reservationtable;
+
 /**
  *
  * @author Kavini
@@ -55,9 +60,6 @@ public class ManageTables extends javax.swing.JFrame {
         setLocation(new java.awt.Point(350, 135));
         setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                formComponentHidden(evt);
-            }
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
             }
@@ -125,6 +127,11 @@ public class ManageTables extends javax.swing.JFrame {
                 "ID", "Table No"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 240, 110));
@@ -177,12 +184,28 @@ public class ManageTables extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        ArrayList<Reservationtable> list = ReservationtableDao.getAllRecords();
+        Iterator<Reservationtable> itr = list.iterator();
+            while(itr.hasNext()){
+            Reservationtable reservationtableObj = itr.next();
+            dtm.addRow(new Object[] {reservationtableObj.getId(),reservationtableObj.getName()});
+        }
     }//GEN-LAST:event_formComponentShown
 
-    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_formComponentHidden
+        int index = jTable1.getSelectedRow();
+        TableModel model = jTable1.getModel();
+        String id = model.getValueAt(index, 0).toString();
+        String name = model.getValueAt(index, 1).toString();
+        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete "+name+" table ?","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            ReservationtableDao.delete(id);
+            setVisible(false);
+            new ManageTables().setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

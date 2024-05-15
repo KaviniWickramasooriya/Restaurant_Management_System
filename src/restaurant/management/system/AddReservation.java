@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurant.management.system;
-//import com.toedter.calendar.JDateChooser;
-//import java.util.Date;
 
 import javax.swing.JOptionPane;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import dao.DbOperations;
+import java.sql.ResultSet;
 
 /**
  *
@@ -20,8 +22,6 @@ public class AddReservation extends javax.swing.JFrame {
     public AddReservation() {
         initComponents();
         
-        // Set current date for date picker
-        //dateChooser.setDate(new Date());
     }
     
     /**
@@ -52,7 +52,7 @@ public class AddReservation extends javax.swing.JFrame {
         txtMobile = new javax.swing.JTextField();
         btnCheckAvailability = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        txtTime = new javax.swing.JFormattedTextField();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jLabel10 = new javax.swing.JLabel();
 
@@ -61,6 +61,11 @@ public class AddReservation extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(350, 135));
         setUndecorated(true);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -103,8 +108,15 @@ public class AddReservation extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Time");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, -1, -1));
+
+        SpinnerGuests.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
         getContentPane().add(SpinnerGuests, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 240, -1));
 
+        ComboBoxTableNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxTableNoActionPerformed(evt);
+            }
+        });
         getContentPane().add(ComboBoxTableNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 240, -1));
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 240, -1));
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 240, -1));
@@ -136,8 +148,8 @@ public class AddReservation extends javax.swing.JFrame {
         });
         getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 90, 30));
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 240, -1));
+        txtTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        getContentPane().add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 240, -1));
         getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 240, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/small-page-background.png"))); // NOI18N
@@ -162,11 +174,76 @@ public class AddReservation extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        // Save reservation to the database.
+        String name = txtName.getText();
+        String email = txtEmail.getText();
+        String mobile = txtMobile.getText();
+        int guests = (int) SpinnerGuests.getValue();
+        String tableNo = (String) ComboBoxTableNo.getSelectedItem();
+        Date date = jDateChooser2.getDate();
+        String time = txtTime.getText();
+
+        // Validation
+        if (name.isEmpty() || email.isEmpty() || mobile.isEmpty() || date == null || time.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All fields are required!");
+            return;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = sdf.format(date);
+
+        String query = "INSERT INTO booking (name, email, mobile, guests, tableNo, date, time) VALUES ('"
+                + name + "', '" + email + "', '" + mobile + "', '" + guests + "', '" + tableNo + "', '" + formattedDate + "', '" + time + "')";
+
+        DbOperations.setDataOrDelete(query, "Reservation added successfully!");
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCheckAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckAvailabilityActionPerformed
         // TODO add your handling code here:
+        String tableNo = (String) ComboBoxTableNo.getSelectedItem();
+        Date date = jDateChooser2.getDate();
+        String time = txtTime.getText();
+
+        if (tableNo == null || date == null || time.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please select a table, date, and time.");
+            return;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = sdf.format(date);
+
+        String query = "SELECT * FROM booking WHERE tableNo = '" + tableNo + "' AND date = '" + formattedDate + "' AND time = '" + time + "'";
+        ResultSet rs = DbOperations.getData(query);
+
+        try {
+            if (rs != null && rs.next()) {
+                JOptionPane.showMessageDialog(null, "Table is not available at the selected time.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Table is available.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Message", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCheckAvailabilityActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        // Populate the table numbers from the reservationtable table.
+        String query = "SELECT * FROM reservationtable";
+        ResultSet rs = DbOperations.getData(query);
+
+        try {
+            while (rs.next()) {
+                ComboBoxTableNo.addItem(rs.getString("name"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Message", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_formComponentShown
+
+    private void ComboBoxTableNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTableNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxTableNoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,7 +287,6 @@ public class AddReservation extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
     private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -226,5 +302,6 @@ public class AddReservation extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMobile;
     private javax.swing.JTextField txtName;
+    private javax.swing.JFormattedTextField txtTime;
     // End of variables declaration//GEN-END:variables
 }
