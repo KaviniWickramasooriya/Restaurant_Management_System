@@ -148,7 +148,6 @@ public class SignIn extends javax.swing.JFrame {
         getContentPane().add(btnForgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
-        jLabel4.setText("jLabel4");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
