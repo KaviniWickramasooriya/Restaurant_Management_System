@@ -277,7 +277,12 @@ public class UserBookings extends javax.swing.JFrame {
         booking.setGuests((int) SpinnerGuests.getValue());
         booking.setTableNo((String) ComboBoxTableNo.getSelectedItem());
         //booking.setDate(jDateChooser2.getDate());
-        Date selectedDate = jDateChooser2.getDate();
+        //Date selectedDate = jDateChooser2.getDate();
+        // Convert JDateChooser date to String
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = sdf.format(jDateChooser2.getDate());
+        booking.setDate(formattedDate);
+        
         booking.setTime(txtTime.getText());
         BookingDao.update(booking);
         setVisible(false);
