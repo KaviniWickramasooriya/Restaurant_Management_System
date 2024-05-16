@@ -286,10 +286,10 @@ public class Bookings extends javax.swing.JFrame {
         booking.setName(txtName.getText());
         booking.setEmail(txtEmail.getText());
         booking.setMobile(txtMobile.getText());
-        //booking.setGuests((int) SpinnerGuests.getValue());
-        booking.setGuests((String) SpinnerGuests.getValue());
+        booking.setGuests((int) SpinnerGuests.getValue());
+        //booking.setGuests((String) SpinnerGuests.getValue());
         booking.setTableNo((String) ComboBoxTableNo.getSelectedItem());
-        //booking.setDate((String)jDateChooser2.getDate());
+        //booking.setDate(jDateChooser2.getDate());
         booking.setTime(txtTime.getText());
         BookingDao.update(booking);
         setVisible(false);
@@ -330,10 +330,15 @@ public class Bookings extends javax.swing.JFrame {
         String mobile = model.getValueAt(index, 3).toString();
         txtMobile.setText(mobile);
         String guests = model.getValueAt(index, 4).toString();
-        //txtGuests.setText(guests);
+        SpinnerGuests.setValue(Integer.parseInt(guests));
         String tableNo = model.getValueAt(index, 5).toString();
         String date = model.getValueAt(index, 6).toString();
-        //txtDate.setText(date);
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            jDateChooser2.setDate(sdf.parse(date));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String time = model.getValueAt(index, 7).toString();
         txtTime.setText(time);
         

@@ -13,7 +13,7 @@ public class Booking {
     private String name;
     private String email;
     private String mobile;
-    private String guests;
+    private int guests;
     private String tableNo;
     private String date;
     private String time;
@@ -50,11 +50,11 @@ public class Booking {
         this.mobile = mobile;
     }
 
-    public String getGuests() {
+    public int getGuests() {
         return guests;
     }
 
-    public void setGuests(String guests) {
+    public void setGuests(int guests) {
         this.guests = guests;
     }
 

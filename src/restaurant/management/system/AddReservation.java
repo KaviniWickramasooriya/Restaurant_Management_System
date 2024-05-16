@@ -75,7 +75,7 @@ public class AddReservation extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new product.png"))); // NOI18N
-        jLabel1.setText("New Reservation");
+        jLabel1.setText("New Booking");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
@@ -168,7 +168,7 @@ public class AddReservation extends javax.swing.JFrame {
         int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
             setVisible(false);
-            new Home().setVisible(true);
+            new SignIn().setVisible(true);
         }
     }//GEN-LAST:event_btnCloseActionPerformed
 

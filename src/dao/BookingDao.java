@@ -29,7 +29,7 @@ public class BookingDao {
                 booking.setName(rs.getString("name"));
                 booking.setEmail(rs.getString("email"));
                 booking.setMobile(rs.getString("mobile"));
-                booking.setGuests(rs.getString("guests"));
+                booking.setGuests(rs.getInt("guests"));
                 booking.setTableNo(rs.getString("tableNo"));
                 booking.setDate(rs.getString("date"));
                 booking.setTime(rs.getString("time"));

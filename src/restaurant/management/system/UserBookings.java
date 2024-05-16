@@ -24,6 +24,7 @@ import model.Reservationtable;
  * @author Kavini
  */
 public class UserBookings extends javax.swing.JFrame {
+    //private String userEmail;
     public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
     public String mobilePattern = "^[0-9]*$";
 
@@ -32,6 +33,7 @@ public class UserBookings extends javax.swing.JFrame {
      */
     public UserBookings() {
         initComponents();
+        //this.userEmail = email;
         btnUpdate.setEnabled(false);
         btnDelete.setEnabled(false);
     }
@@ -272,14 +274,16 @@ public class UserBookings extends javax.swing.JFrame {
         booking.setName(txtName.getText());
         booking.setEmail(txtEmail.getText());
         booking.setMobile(txtMobile.getText());
-        //booking.setGuests((int) SpinnerGuests.getValue());
-        booking.setGuests((String) SpinnerGuests.getValue());
+        booking.setGuests((int) SpinnerGuests.getValue());
+        //booking.setGuests((String) SpinnerGuests.getValue());
         booking.setTableNo((String) ComboBoxTableNo.getSelectedItem());
-        //booking.setDate((String)jDateChooser2.getDate());
+        //booking.setDate(jDateChooser2.getDate());
+        Date selectedDate = jDateChooser2.getDate();
         booking.setTime(txtTime.getText());
         BookingDao.update(booking);
         setVisible(false);
         new UserBookings().setVisible(true);
+        //new UserBookings(this.userEmail).setVisible(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -290,6 +294,7 @@ public class UserBookings extends javax.swing.JFrame {
             BookingDao.delete(id);
             setVisible(false);
             new UserBookings().setVisible(true);
+            //new UserBookings(this.userEmail).setVisible(true);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -306,10 +311,15 @@ public class UserBookings extends javax.swing.JFrame {
         String mobile = model.getValueAt(index, 3).toString();
         txtMobile.setText(mobile);
         String guests = model.getValueAt(index, 4).toString();
-        //txtGuests.setText(guests);
+        SpinnerGuests.setValue(Integer.parseInt(guests));
         String tableNo = model.getValueAt(index, 5).toString();
         String date = model.getValueAt(index, 6).toString();
-        //txtDate.setText(date);
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            jDateChooser2.setDate(sdf.parse(date));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String time = model.getValueAt(index, 7).toString();
         txtTime.setText(time);
 
@@ -343,7 +353,9 @@ public class UserBookings extends javax.swing.JFrame {
         Iterator<Booking> itr = list.iterator();
             while(itr.hasNext()){
             Booking bookingObj = itr.next();
-            dtm.addRow(new Object[] {bookingObj.getId(),bookingObj.getName(),bookingObj.getEmail(),bookingObj.getMobile(),bookingObj.getGuests(),bookingObj.getTableNo(),bookingObj.getDate(),bookingObj.getTime()});
+            //if(bookingObj.getEmail().equals(this.userEmail)) {
+                dtm.addRow(new Object[] {bookingObj.getId(),bookingObj.getName(),bookingObj.getEmail(),bookingObj.getMobile(),bookingObj.getGuests(),bookingObj.getTableNo(),bookingObj.getDate(),bookingObj.getTime()});
+            //}
         }
     }//GEN-LAST:event_formComponentShown
 
@@ -378,6 +390,7 @@ public class UserBookings extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UserBookings().setVisible(true);
+                //new UserBookings(this.userEmail).setVisible(true);
             }
         });
     }
