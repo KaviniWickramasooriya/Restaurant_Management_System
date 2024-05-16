@@ -73,7 +73,6 @@ public class UserBookings extends javax.swing.JFrame {
         SpinnerGuests = new javax.swing.JSpinner();
         txtMobile = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        txtTime = new javax.swing.JFormattedTextField();
         btnCheckAvailability = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -81,6 +80,7 @@ public class UserBookings extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
+        txtTime = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -159,9 +159,6 @@ public class UserBookings extends javax.swing.JFrame {
         });
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 240, -1));
 
-        txtTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        getContentPane().add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 240, -1));
-
         btnCheckAvailability.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCheckAvailability.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/place order.png"))); // NOI18N
         btnCheckAvailability.setText("Check Availability");
@@ -220,6 +217,9 @@ public class UserBookings extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 70, 30, -1));
+
+        txtTime.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 240, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -425,6 +425,6 @@ public class UserBookings extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMobile;
     private javax.swing.JTextField txtName;
-    private javax.swing.JFormattedTextField txtTime;
+    private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
 }
