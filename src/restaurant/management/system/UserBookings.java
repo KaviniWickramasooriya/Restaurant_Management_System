@@ -275,7 +275,6 @@ public class UserBookings extends javax.swing.JFrame {
         booking.setEmail(txtEmail.getText());
         booking.setMobile(txtMobile.getText());
         booking.setGuests((int) SpinnerGuests.getValue());
-        //booking.setGuests((String) SpinnerGuests.getValue());
         booking.setTableNo((String) ComboBoxTableNo.getSelectedItem());
         //booking.setDate(jDateChooser2.getDate());
         Date selectedDate = jDateChooser2.getDate();
