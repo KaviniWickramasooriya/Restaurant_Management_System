@@ -307,7 +307,7 @@ public class UserBookings extends javax.swing.JFrame {
         
         booking.setTime(txtTime.getText());
         BookingDao.update(booking);
-        setVisible(false);
+        //setVisible(false);
         new UserBookings().setVisible(true);
         //new UserBookings(this.userEmail).setVisible(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -318,7 +318,7 @@ public class UserBookings extends javax.swing.JFrame {
         int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete booking ? ","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             BookingDao.delete(id);
-            setVisible(false);
+            //setVisible(false);
             new UserBookings().setVisible(true);
             //new UserBookings(this.userEmail).setVisible(true);
         }
@@ -367,7 +367,7 @@ public class UserBookings extends javax.swing.JFrame {
         // TODO add your handling code here:
         int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
-            setVisible(false);
+            //setVisible(false);
             new Home().setVisible(true);
         }
     }//GEN-LAST:event_btnCloseActionPerformed

@@ -34,6 +34,10 @@ public class ManageTables extends javax.swing.JFrame {
         }
     }
 
+    public void clear(){
+        txtName.setText("");
+        btnSave.setEnabled(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -150,7 +154,7 @@ public class ManageTables extends javax.swing.JFrame {
         // TODO add your handling code here:
         int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
-            setVisible(false);
+            //setVisible(false);
             new Admin().setVisible(true);
         }
     }//GEN-LAST:event_btnCloseActionPerformed
@@ -160,13 +164,12 @@ public class ManageTables extends javax.swing.JFrame {
         Reservationtable reservationtable = new Reservationtable();
         reservationtable.setName(txtName.getText());
         ReservationtableDao.save(reservationtable);
-        setVisible(false);
+        //setVisible(false);
         new ManageTables().setVisible(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        setVisible(false);
-        new ManageTables().setVisible(true);
+        clear();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
@@ -194,7 +197,7 @@ public class ManageTables extends javax.swing.JFrame {
         int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete "+name+" table ?","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             ReservationtableDao.delete(id);
-            setVisible(false);
+            //setVisible(false);
             new ManageTables().setVisible(true);
         }
     }//GEN-LAST:event_jTable1MouseClicked

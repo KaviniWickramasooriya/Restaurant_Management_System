@@ -135,19 +135,19 @@ public class Admin extends javax.swing.JFrame {
 
     private void btnBookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        //setVisible(false);
         new Bookings().setVisible(true);
     }//GEN-LAST:event_btnBookingsActionPerformed
 
     private void btnVerifyUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyUsersActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        //setVisible(false);
         new VerifyUsers().setVisible(true);
     }//GEN-LAST:event_btnVerifyUsersActionPerformed
 
     private void btnTablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablesActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        //setVisible(false);
         new ManageTables().setVisible(true);
     }//GEN-LAST:event_btnTablesActionPerformed
 

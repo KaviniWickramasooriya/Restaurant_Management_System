@@ -126,7 +126,7 @@ public class VerifyUsers extends javax.swing.JFrame {
         // TODO add your handling code here:
         int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
-            setVisible(false);
+            //setVisible(false);
             new Admin().setVisible(true);
         }
     }//GEN-LAST:event_btnCloseActionPerformed
@@ -153,7 +153,7 @@ public class VerifyUsers extends javax.swing.JFrame {
         int a = JOptionPane.showConfirmDialog(null, "Do you want to change Status of "+email+"","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             UserDao.changeStatus(email, status);
-            setVisible(false);
+            //setVisible(false);
             new VerifyUsers().setVisible(true);
         }
     }//GEN-LAST:event_jTable1MouseClicked

@@ -18,18 +18,19 @@ public class SignUp extends javax.swing.JFrame {
      */
     public SignUp() {
         initComponents();
+        btnClear.setEnabled(false);
         btnSave.setEnabled(false);
     }
     
     public void clear(){
-    txtName.setText("");
-    txtEmail.setText("");
-    txtMobile.setText("");
-    txtAddress.setText("");
-    txtPassword.setText("");
-    txtSecurity.setText("");
-    txtAnswer.setText("");
-    btnSave.setEnabled(false);
+        txtName.setText("");
+        txtEmail.setText("");
+        txtMobile.setText("");
+        txtAddress.setText("");
+        txtPassword.setText("");
+        txtSecurity.setText("");
+        txtAnswer.setText("");
+        btnSave.setEnabled(false);
     }
     
     public void validateFields(){
@@ -40,10 +41,14 @@ public class SignUp extends javax.swing.JFrame {
         String password = txtPassword.getText();
         String security = txtSecurity.getText();
         String answer = txtAnswer.getText();
-        if(!name.equals("")&& email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !address.equals("") && !password.equals("") && !security.equals("")&& !answer.equals(""))
+        if(!name.equals("")&& email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !address.equals("") && !password.equals("") && !security.equals("")&& !answer.equals("")){
             btnSave.setEnabled(true);
-        else
+            btnClear.setEnabled(true);
+        }           
+        else{
             btnSave.setEnabled(false);
+            btnClear.setEnabled(false);
+        }
     }
 
     /**
@@ -74,9 +79,8 @@ public class SignUp extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        btnForgetPassword = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,37 +88,44 @@ public class SignUp extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(153, 153, 0));
         jLabel1.setText("Sign Up");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, 168, 73));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 70, 168, 73));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name : ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Email :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 60, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 60, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Mobile :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 257, 119, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 119, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Address : ");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 297, 119, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, 119, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Password : ");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 337, 119, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, 119, 30));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Security Quesction : ");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 387, 150, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, 150, 20));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Answer : ");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 72, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, 72, -1));
 
         txtName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -122,7 +133,7 @@ public class SignUp extends javax.swing.JFrame {
                 txtNameKeyReleased(evt);
             }
         });
-        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 348, -1));
+        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 348, -1));
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -130,7 +141,7 @@ public class SignUp extends javax.swing.JFrame {
                 txtEmailKeyReleased(evt);
             }
         });
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 348, -1));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 348, -1));
 
         txtMobile.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtMobile.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -138,7 +149,7 @@ public class SignUp extends javax.swing.JFrame {
                 txtMobileKeyReleased(evt);
             }
         });
-        getContentPane().add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 348, -1));
+        getContentPane().add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, 348, -1));
 
         txtAddress.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -146,7 +157,7 @@ public class SignUp extends javax.swing.JFrame {
                 txtAddressKeyReleased(evt);
             }
         });
-        getContentPane().add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 348, -1));
+        getContentPane().add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, 348, -1));
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -154,7 +165,7 @@ public class SignUp extends javax.swing.JFrame {
                 txtPasswordKeyReleased(evt);
             }
         });
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 348, -1));
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 330, 348, -1));
 
         txtSecurity.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtSecurity.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -162,7 +173,7 @@ public class SignUp extends javax.swing.JFrame {
                 txtSecurityKeyReleased(evt);
             }
         });
-        getContentPane().add(txtSecurity, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 348, -1));
+        getContentPane().add(txtSecurity, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 380, 348, -1));
 
         txtAnswer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtAnswer.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -170,7 +181,7 @@ public class SignUp extends javax.swing.JFrame {
                 txtAnswerKeyReleased(evt);
             }
         });
-        getContentPane().add(txtAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, 348, -1));
+        getContentPane().add(txtAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 430, 348, -1));
 
         btnSave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
@@ -180,7 +191,7 @@ public class SignUp extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 470, -1, -1));
+        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 480, 90, 30));
 
         btnClear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
@@ -190,7 +201,7 @@ public class SignUp extends javax.swing.JFrame {
                 btnClearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 470, -1, -1));
+        getContentPane().add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 480, -1, 30));
 
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit small.png"))); // NOI18N
@@ -200,25 +211,23 @@ public class SignUp extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 470, -1, -1));
-
-        btnForgetPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnForgetPassword.setText("Forgot Password ?");
-        getContentPane().add(btnForgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 510, -1, -1));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 530, 90, 30));
 
         btnLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
         btnLogin.setText("LogIn");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, -1, -1));
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 530, 100, 30));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupsmall.png"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 280, 280));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EMERALDBAYLOGO.png"))); // NOI18N
+        jLabel11.setPreferredSize(new java.awt.Dimension(200, 200));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 490, 480));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home-background-image.png"))); // NOI18N
         jLabel9.setPreferredSize(new java.awt.Dimension(1366, 800));
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -210, 1560, 1060));
 
@@ -286,7 +295,7 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        setVisible(false);
+        //setVisible(false);
         new SignIn().setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
     
@@ -330,12 +339,11 @@ public class SignUp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnForgetPassword;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnSave;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

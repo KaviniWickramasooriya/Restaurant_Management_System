@@ -259,14 +259,14 @@ public class Bookings extends javax.swing.JFrame {
         // TODO add your handling code here:
         int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
-            setVisible(false);
+            //setVisible(false);
             new Admin().setVisible(true);
         }
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnAddReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddReservationActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        //setVisible(false);
         new AddReservation().setVisible(true);
     }//GEN-LAST:event_btnAddReservationActionPerformed
 
@@ -320,7 +320,7 @@ public class Bookings extends javax.swing.JFrame {
 //        String time = txtTime.getText();
 //        booking.setTime(time);
         BookingDao.update(booking);
-        setVisible(false);
+        //setVisible(false);
         new Bookings().setVisible(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -390,7 +390,7 @@ public class Bookings extends javax.swing.JFrame {
         int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete booking ? ","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             BookingDao.delete(id);
-            setVisible(false);
+            //setVisible(false);
             new Bookings().setVisible(true);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed

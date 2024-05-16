@@ -111,20 +111,20 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         int a= JOptionPane.showConfirmDialog(null, "Do you really want to Logout ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
-            setVisible(false);
+            //setVisible(false);
             new SignIn().setVisible(true);
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnMyBookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyBookingsActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        //setVisible(false);
         new UserBookings().setVisible(true);
     }//GEN-LAST:event_btnMyBookingsActionPerformed
 
     private void btnAddBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBookingActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        //setVisible(false);
         new AddReservation().setVisible(true);
     }//GEN-LAST:event_btnAddBookingActionPerformed
 
