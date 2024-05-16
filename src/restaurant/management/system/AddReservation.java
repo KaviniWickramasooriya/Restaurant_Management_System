@@ -178,8 +178,8 @@ public class AddReservation extends javax.swing.JFrame {
         String name = txtName.getText();
         String email = txtEmail.getText();
         String mobile = txtMobile.getText();
-        //int guests = (int) SpinnerGuests.getValue();
-        String guests = ((String) SpinnerGuests.getValue());
+        int guests = (int) SpinnerGuests.getValue();
+        //String guests = ((String) SpinnerGuests.getValue());
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
         String time = txtTime.getText();
