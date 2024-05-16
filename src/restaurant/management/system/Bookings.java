@@ -230,7 +230,7 @@ public class Bookings extends javax.swing.JFrame {
         getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-180, -10, 1370, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -288,8 +288,15 @@ public class Bookings extends javax.swing.JFrame {
         booking.setMobile(txtMobile.getText());
         booking.setGuests((int) SpinnerGuests.getValue());
         booking.setTableNo((String) ComboBoxTableNo.getSelectedItem());
-        //booking.setDate(jDateChooser2.getDate());
+        // Convert JDateChooser date to String
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = sdf.format(jDateChooser2.getDate());
+        booking.setDate(formattedDate);
+        
         booking.setTime(txtTime.getText());
+        // Retrieve time from txtTime field
+//        String time = txtTime.getText();
+//        booking.setTime(time);
         BookingDao.update(booking);
         setVisible(false);
         new Bookings().setVisible(true);
