@@ -24,7 +24,10 @@ public class AddReservation extends javax.swing.JFrame {
     public AddReservation() {
         initComponents();
         btnCheckAvailability.setEnabled(false);
-        btnSave.setEnabled(false);       
+        btnSave.setEnabled(false);  
+        
+        // Set the minimum selectable date to today's date
+        jDateChooser2.setMinSelectableDate(new Date());
     }
     
     public void validateFields(){

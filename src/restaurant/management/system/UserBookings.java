@@ -37,6 +37,9 @@ public class UserBookings extends javax.swing.JFrame {
         btnCheckAvailability.setEnabled(false);
         btnUpdate.setEnabled(false);
         btnDelete.setEnabled(false);
+        
+        // Set the minimum selectable date to today's date
+        jDateChooser2.setMinSelectableDate(new Date());
     }
 
     public void validateFields(){
