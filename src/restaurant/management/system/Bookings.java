@@ -37,12 +37,15 @@ public class Bookings extends javax.swing.JFrame {
     }
 
     public void validateFields(){
-    String email = txtEmail.getText();
+        String email = txtEmail.getText();
         String mobile = txtMobile.getText();
-        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10)
-            btnUpdate.setEnabled(true);
+        String tableNo = (String) ComboBoxTableNo.getSelectedItem();
+        Date date = jDateChooser2.getDate();
+        String time = txtTime.getText();
+        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !tableNo.equals("") && !date.equals("") && !time.equals(""))
+            btnCheckAvailability.setEnabled(true);
         else
-            btnUpdate.setEnabled(false);
+            btnCheckAvailability.setEnabled(false);
     }
     
     /**
@@ -114,6 +117,11 @@ public class Bookings extends javax.swing.JFrame {
         });
         getContentPane().add(btnAddReservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
+        ComboBoxTableNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ComboBoxTableNoKeyReleased(evt);
+            }
+        });
         getContentPane().add(ComboBoxTableNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 240, -1));
 
         SpinnerGuests.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
@@ -133,6 +141,12 @@ public class Bookings extends javax.swing.JFrame {
         });
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 240, -1));
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 240, -1));
+
+        jDateChooser2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jDateChooser2KeyReleased(evt);
+            }
+        });
         getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 240, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -228,6 +242,11 @@ public class Bookings extends javax.swing.JFrame {
         getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
 
         txtTime.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTime.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimeKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 240, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
@@ -375,6 +394,21 @@ public class Bookings extends javax.swing.JFrame {
             new Bookings().setVisible(true);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtTimeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimeKeyReleased
+        // TODO add your handling code here:
+        validateFields();
+    }//GEN-LAST:event_txtTimeKeyReleased
+
+    private void jDateChooser2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooser2KeyReleased
+        // TODO add your handling code here:
+        validateFields();
+    }//GEN-LAST:event_jDateChooser2KeyReleased
+
+    private void ComboBoxTableNoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComboBoxTableNoKeyReleased
+        // TODO add your handling code here:
+        validateFields();
+    }//GEN-LAST:event_ComboBoxTableNoKeyReleased
 
     /**
      * @param args the command line arguments
