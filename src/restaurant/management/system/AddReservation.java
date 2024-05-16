@@ -23,6 +23,7 @@ public class AddReservation extends javax.swing.JFrame {
      */
     public AddReservation() {
         initComponents();
+        btnSave.setEnabled(false);
         
     }
     
@@ -195,7 +196,7 @@ public class AddReservation extends javax.swing.JFrame {
         String query = "INSERT INTO booking (name, email, mobile, guests, tableNo, date, time) VALUES ('"
                 + name + "', '" + email + "', '" + mobile + "', '" + guests + "', '" + tableNo + "', '" + formattedDate + "', '" + time + "')";
 
-        DbOperations.setDataOrDelete(query, "Reservation added successfully!");
+        DbOperations.setDataOrDelete(query, "Booking added successfully!");
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCheckAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckAvailabilityActionPerformed
@@ -217,9 +218,11 @@ public class AddReservation extends javax.swing.JFrame {
 
         try {
             if (rs != null && rs.next()) {
-                JOptionPane.showMessageDialog(null, "Table is not available at the selected time.");
+                JOptionPane.showMessageDialog(null, "Table is not available at the selected date and time.");
+                btnSave.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Table is available.");
+                btnSave.setEnabled(true);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Message", JOptionPane.ERROR_MESSAGE);

@@ -31,6 +31,7 @@ public class Bookings extends javax.swing.JFrame {
      */
     public Bookings() {
         initComponents();
+        btnCheckAvailability.setEnabled(false);
         btnUpdate.setEnabled(false);
         btnDelete.setEnabled(false);
     }
@@ -269,9 +270,11 @@ public class Bookings extends javax.swing.JFrame {
 
         try {
             if (rs != null && rs.next()) {
-                JOptionPane.showMessageDialog(null, "Table is not available at the selected time.");
+                JOptionPane.showMessageDialog(null, "Table is not available at the selected date and time.");
+                btnUpdate.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Table is available.");
+                btnUpdate.setEnabled(true);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Message", JOptionPane.ERROR_MESSAGE);
@@ -348,7 +351,7 @@ public class Bookings extends javax.swing.JFrame {
         String time = model.getValueAt(index, 7).toString();
         txtTime.setText(time);
         
-        btnUpdate.setEnabled(true);
+        btnCheckAvailability.setEnabled(true);
         btnDelete.setEnabled(true);
         ComboBoxTableNo.removeAllItems();
         ComboBoxTableNo.addItem(tableNo);
