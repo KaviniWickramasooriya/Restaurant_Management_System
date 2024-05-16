@@ -62,6 +62,7 @@ public class Bookings extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        txtTime = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -78,7 +79,6 @@ public class Bookings extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
-        txtTime = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,7 +118,6 @@ public class Bookings extends javax.swing.JFrame {
         SpinnerGuests.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
         getContentPane().add(SpinnerGuests, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 240, -1));
 
-        txtMobile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMobile.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMobileKeyReleased(evt);
@@ -126,17 +125,17 @@ public class Bookings extends javax.swing.JFrame {
         });
         getContentPane().add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 240, -1));
 
-        txtEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtEmailKeyReleased(evt);
             }
         });
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 240, -1));
-
-        txtName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 240, -1));
         getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 240, -1));
+
+        txtTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        getContentPane().add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 240, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Time :");
@@ -230,11 +229,8 @@ public class Bookings extends javax.swing.JFrame {
         lblId.setText("00");
         getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
 
-        txtTime.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 240, -1));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-180, -10, 1370, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -295,12 +291,12 @@ public class Bookings extends javax.swing.JFrame {
         // Convert JDateChooser date to String
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = sdf.format(jDateChooser2.getDate());
-        booking.setDate(formattedDate);       
+        booking.setDate(formattedDate);
+        
         booking.setTime(txtTime.getText());
         // Retrieve time from txtTime field
 //        String time = txtTime.getText();
 //        booking.setTime(time);
-
         BookingDao.update(booking);
         setVisible(false);
         new Bookings().setVisible(true);
@@ -439,7 +435,7 @@ public class Bookings extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMobile;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtTime;
+    private javax.swing.JFormattedTextField txtTime;
     // End of variables declaration//GEN-END:variables
 
 }
