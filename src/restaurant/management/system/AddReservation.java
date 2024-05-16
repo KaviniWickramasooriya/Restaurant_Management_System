@@ -28,12 +28,13 @@ public class AddReservation extends javax.swing.JFrame {
     }
     
     public void validateFields(){
+        String name = txtName.getText();
         String email = txtEmail.getText();
         String mobile = txtMobile.getText();
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
-        String time = txtTime.getText();
-        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !tableNo.equals("") && !date.equals("") && !time.equals(""))
+        String time = (String) jComboBoxTime.getSelectedItem();
+        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !name.equals("") && !tableNo.equals("") && !date.equals("") && !time.equals(""))
             btnCheckAvailability.setEnabled(true);
         else
             btnCheckAvailability.setEnabled(false);
@@ -65,8 +66,8 @@ public class AddReservation extends javax.swing.JFrame {
         btnCheckAvailability = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        txtTime = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jComboBoxTime = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,6 +125,12 @@ public class AddReservation extends javax.swing.JFrame {
         getContentPane().add(SpinnerGuests, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 240, -1));
 
         getContentPane().add(ComboBoxTableNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 240, -1));
+
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 240, -1));
 
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -167,15 +174,9 @@ public class AddReservation extends javax.swing.JFrame {
         });
         getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, 240, -1));
 
-        txtTime.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimeKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 570, 240, -1));
-
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/table.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, -1, -1));
+        getContentPane().add(jComboBoxTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 570, 240, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
         jLabel10.setText("jLabel10");
@@ -202,7 +203,8 @@ public class AddReservation extends javax.swing.JFrame {
         int guests = (int) SpinnerGuests.getValue();
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
-        String time = txtTime.getText();
+        // Get the selected time slot
+        String time = (String) jComboBoxTime.getSelectedItem();
 
         // Validation
         if (name.isEmpty() || email.isEmpty() || mobile.isEmpty() || date == null ) {
@@ -217,14 +219,17 @@ public class AddReservation extends javax.swing.JFrame {
                 + name + "', '" + email + "', '" + mobile + "', '" + guests + "', '" + tableNo + "', '" + formattedDate + "', '" + time + "')";
 
         DbOperations.setDataOrDelete(query, "Booking added successfully!");
-        setVisible(false);
+        //setVisible(false);
+        new SignIn().setVisible(true);
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCheckAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckAvailabilityActionPerformed
         // TODO add your handling code here:
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
-        String time = txtTime.getText();
+        // Get the selected time slot
+        String time = (String) jComboBoxTime.getSelectedItem();
 
         if (tableNo == null || date == null) {
             JOptionPane.showMessageDialog(null, "Please select a table, date, and time.");
@@ -263,6 +268,11 @@ public class AddReservation extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Message", JOptionPane.ERROR_MESSAGE);
         }
+        
+        for (int i = 8; i <= 19; i++) {
+            String hour = String.format("%02d", i);
+            jComboBoxTime.addItem(hour + ":00");
+        }
     }//GEN-LAST:event_formComponentShown
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
@@ -280,10 +290,10 @@ public class AddReservation extends javax.swing.JFrame {
         validateFields();
     }//GEN-LAST:event_jDateChooser2KeyReleased
 
-    private void txtTimeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimeKeyReleased
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
         // TODO add your handling code here:
         validateFields();
-    }//GEN-LAST:event_txtTimeKeyReleased
+    }//GEN-LAST:event_txtNameKeyReleased
 
     /**
      * @param args the command line arguments
@@ -326,6 +336,7 @@ public class AddReservation extends javax.swing.JFrame {
     private javax.swing.JButton btnCheckAvailability;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> jComboBoxTime;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -340,6 +351,5 @@ public class AddReservation extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMobile;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
 }

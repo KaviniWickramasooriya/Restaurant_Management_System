@@ -40,12 +40,13 @@ public class UserBookings extends javax.swing.JFrame {
     }
 
     public void validateFields(){
+        String name = txtName.getText();
         String email = txtEmail.getText();
         String mobile = txtMobile.getText();
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
-        String time = txtTime.getText();
-        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !tableNo.equals("") && !date.equals("") && !time.equals(""))
+        String time = (String) jComboBoxTime.getSelectedItem();
+        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10  && !name.equals("") && !tableNo.equals("") && !date.equals("") && !time.equals(""))
             btnCheckAvailability.setEnabled(true);
         else
             btnCheckAvailability.setEnabled(false);
@@ -84,7 +85,7 @@ public class UserBookings extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
-        txtTime = new javax.swing.JTextField();
+        jComboBoxTime = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,6 +114,12 @@ public class UserBookings extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Name :");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 240, -1));
 
         lblId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -232,14 +239,7 @@ public class UserBookings extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 70, 30, -1));
-
-        txtTime.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtTime.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimeKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 240, -1));
+        getContentPane().add(jComboBoxTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 240, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -262,7 +262,8 @@ public class UserBookings extends javax.swing.JFrame {
         // TODO add your handling code here:
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
-        String time = txtTime.getText();
+        // Get the selected time slot
+        String time = (String) jComboBoxTime.getSelectedItem();
 
         if (tableNo == null || date == null) {
             JOptionPane.showMessageDialog(null, "Please select a table, date, and time.");
@@ -298,14 +299,12 @@ public class UserBookings extends javax.swing.JFrame {
         booking.setMobile(txtMobile.getText());
         booking.setGuests((int) SpinnerGuests.getValue());
         booking.setTableNo((String) ComboBoxTableNo.getSelectedItem());
-        //booking.setDate(jDateChooser2.getDate());
-        //Date selectedDate = jDateChooser2.getDate();
         // Convert JDateChooser date to String
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = sdf.format(jDateChooser2.getDate());
         booking.setDate(formattedDate);
+        booking.setTime((String) jComboBoxTime.getSelectedItem());
         
-        booking.setTime(txtTime.getText());
         BookingDao.update(booking);
         //setVisible(false);
         new UserBookings().setVisible(true);
@@ -346,8 +345,9 @@ public class UserBookings extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String time = model.getValueAt(index, 7).toString();
-        txtTime.setText(time);
+        String time = model.getValueAt(index, 7).toString();  
+        // Set previously selected time in jComboBoxTime
+        jComboBoxTime.setSelectedItem(time);
 
         btnCheckAvailability.setEnabled(true);
         btnDelete.setEnabled(true);
@@ -383,12 +383,12 @@ public class UserBookings extends javax.swing.JFrame {
                 dtm.addRow(new Object[] {bookingObj.getId(),bookingObj.getName(),bookingObj.getEmail(),bookingObj.getMobile(),bookingObj.getGuests(),bookingObj.getTableNo(),bookingObj.getDate(),bookingObj.getTime()});
             //}
         }
+            
+        for (int i = 8; i <= 19; i++) {
+            String hour = String.format("%02d", i);
+            jComboBoxTime.addItem(hour + ":00");
+        }
     }//GEN-LAST:event_formComponentShown
-
-    private void txtTimeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimeKeyReleased
-        // TODO add your handling code here:
-        validateFields();
-    }//GEN-LAST:event_txtTimeKeyReleased
 
     private void jDateChooser2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooser2KeyReleased
         // TODO add your handling code here:
@@ -399,6 +399,11 @@ public class UserBookings extends javax.swing.JFrame {
         // TODO add your handling code here:
         validateFields();
     }//GEN-LAST:event_ComboBoxTableNoKeyReleased
+
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+        validateFields();
+    }//GEN-LAST:event_txtNameKeyReleased
 
     /**
      * @param args the command line arguments
@@ -443,6 +448,7 @@ public class UserBookings extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> jComboBoxTime;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -462,6 +468,5 @@ public class UserBookings extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMobile;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
 }
