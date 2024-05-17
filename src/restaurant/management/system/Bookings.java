@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import model.Booking;
 import model.Reservationtable;
 
@@ -46,10 +50,100 @@ public class Bookings extends javax.swing.JFrame {
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
         String time = (String) jComboBoxTime.getSelectedItem();
-        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !name.equals("") && !tableNo.equals("") && !date.equals("") && !time.equals(""))
+        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !name.equals("") && !tableNo.equals("") && date != null && !time.equals(""))
             btnCheckAvailability.setEnabled(true);
         else
             btnCheckAvailability.setEnabled(false);
+    }
+    
+    // Method to generate the report
+    private void generateReport() {
+        Document document = new Document();
+        try {
+            String filePath = "D:\\Downloads\\Bookings_Report.pdf";
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            writer.setPageEvent(new HeaderFooterPageEvent());
+
+            document.open();
+            addTitlePage(document);
+            addContent(document);
+            
+            document.close();
+            JOptionPane.showMessageDialog(null, "Report Generated Successfully !");
+        } catch (DocumentException | IOException e) {
+            JOptionPane.showMessageDialog(null, "Error generating report: " + e.getMessage());
+        }
+    }
+
+    private void addTitlePage(Document document) throws DocumentException {
+        Font titleFont = new Font(Font.FontFamily.TIMES_ROMAN, 20, Font.BOLD, BaseColor.BLUE.darker());
+        Font subTitleFont = new Font(Font.FontFamily.TIMES_ROMAN, 14);
+        Paragraph title = new Paragraph("Restaurant Bookings Report", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        document.add(title);
+
+        Paragraph subTitle = new Paragraph("Generated on: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date()), subTitleFont);
+        subTitle.setAlignment(Element.ALIGN_CENTER);
+        document.add(subTitle);
+
+        document.add(Chunk.NEWLINE);
+        document.add(Chunk.NEWLINE);
+    }
+
+    private void addContent(Document document) throws DocumentException {
+    Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
+    PdfPTable table = new PdfPTable(8);
+    table.setWidthPercentage(100);
+    
+    // Define the widths for each column
+    float[] columnWidths = {0.5f, 1.5f, 1.5f, 1, 1, 0.8f, 1, 0.8f}; // Adjust the widths as needed
+    table.setWidths(columnWidths);
+
+    String[] headers = {"ID", "Name", "Email", "Contact No.", "No. of Guests", "Table No.", "Date", "Time"};
+    for (String header : headers) {
+        PdfPCell cell = new PdfPCell(new Phrase(header, tableHeaderFont));
+        BaseColor creamColor = new BaseColor(255, 253, 208);
+        cell.setBackgroundColor(creamColor); // Set background color
+        table.addCell(cell);
+    }
+
+    // Create font for the table content
+    Font tableFont = new Font(Font.FontFamily.TIMES_ROMAN, 8, Font.NORMAL);
+    
+    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+    int rowCount = model.getRowCount();
+    for (int i = 0; i < rowCount; i++) {
+        for (int j = 0; j < model.getColumnCount(); j++) {
+            // Create PdfPCell with table content font
+            PdfPCell cell = new PdfPCell(new Phrase(model.getValueAt(i, j).toString(), tableFont));
+            if (j == 2) { // Email field
+                cell.setFixedHeight(20f); // Adjust the height for the email field as needed
+            }
+            table.addCell(cell);
+        }
+    }
+    document.add(table);
+    }
+
+    private static class HeaderFooterPageEvent extends PdfPageEventHelper {
+        private final Font footerFont = new Font(Font.FontFamily.HELVETICA, 6);
+
+        @Override
+        public void onEndPage(PdfWriter writer, Document document) {
+            PdfPTable footer = new PdfPTable(1);
+            try {
+                footer.setWidths(new int[]{24});
+                footer.setTotalWidth(527);
+                footer.setLockedWidth(true);
+                footer.getDefaultCell().setFixedHeight(40);
+                footer.getDefaultCell().setBorder(Rectangle.TOP);
+                footer.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
+                footer.addCell(new Phrase("Restaurant Bookings Report - Page " + writer.getPageNumber(), footerFont));
+                footer.writeSelectedRows(0, -1, 34, 50, writer.getDirectContent());
+            } catch (DocumentException de) {
+                throw new ExceptionConverter(de);
+            }
+        }
     }
     
     /**
@@ -87,6 +181,7 @@ public class Bookings extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
         jComboBoxTime = new javax.swing.JComboBox<>();
+        btnDownload = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -252,6 +347,16 @@ public class Bookings extends javax.swing.JFrame {
         getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
         getContentPane().add(jComboBoxTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 240, -1));
 
+        btnDownload.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnDownload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/View Bills & Order Placed Details.png"))); // NOI18N
+        btnDownload.setText("Download Reports");
+        btnDownload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownloadActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDownload, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, -1, -1));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
 
@@ -260,7 +365,7 @@ public class Bookings extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
+        int a= JOptionPane.showConfirmDialog(null, "Do you want to Close this ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
             //setVisible(false);
             new Admin().setVisible(true);
@@ -296,7 +401,7 @@ public class Bookings extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Table is not available at the selected date and time.");
                 btnUpdate.setEnabled(false);
             } else {
-                JOptionPane.showMessageDialog(null, "Table is available.");
+                JOptionPane.showMessageDialog(null, "Table is Available.");
                 btnUpdate.setEnabled(true);
             }
         } catch (Exception e) {
@@ -319,10 +424,13 @@ public class Bookings extends javax.swing.JFrame {
         String formattedDate = sdf.format(jDateChooser2.getDate());
         booking.setDate(formattedDate);
         booking.setTime((String) jComboBoxTime.getSelectedItem());
+        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Update Booking ? ","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            BookingDao.update(booking);
+            //setVisible(false);
+            new Bookings().setVisible(true);
+        }
         
-        BookingDao.update(booking);
-        //setVisible(false);
-        new Bookings().setVisible(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
@@ -394,7 +502,7 @@ public class Bookings extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         String id = lblId.getText();
-        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete booking ? ","Select",JOptionPane.YES_NO_OPTION);
+        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete Booking ? ","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             BookingDao.delete(id);
             //setVisible(false);
@@ -416,6 +524,11 @@ public class Bookings extends javax.swing.JFrame {
         // TODO add your handling code here:
         validateFields();
     }//GEN-LAST:event_txtNameKeyReleased
+
+    private void btnDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadActionPerformed
+        // TODO add your handling code here:
+        generateReport();
+    }//GEN-LAST:event_btnDownloadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -459,6 +572,7 @@ public class Bookings extends javax.swing.JFrame {
     private javax.swing.JButton btnCheckAvailability;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDownload;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> jComboBoxTime;
     private com.toedter.calendar.JDateChooser jDateChooser2;

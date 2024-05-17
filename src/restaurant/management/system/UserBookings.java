@@ -49,7 +49,7 @@ public class UserBookings extends javax.swing.JFrame {
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
         String time = (String) jComboBoxTime.getSelectedItem();
-        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10  && !name.equals("") && !tableNo.equals("") && !date.equals("") && !time.equals(""))
+        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10  && !name.equals("") && !tableNo.equals("") && date != null && !time.equals(""))
             btnCheckAvailability.setEnabled(true);
         else
             btnCheckAvailability.setEnabled(false);
@@ -192,7 +192,7 @@ public class UserBookings extends javax.swing.JFrame {
                 btnCheckAvailabilityActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 550, 190, 30));
+        getContentPane().add(btnCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 190, 30));
 
         btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
@@ -202,7 +202,7 @@ public class UserBookings extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 600, -1, -1));
+        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 590, -1, -1));
 
         btnDelete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
@@ -212,7 +212,7 @@ public class UserBookings extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 600, -1, -1));
+        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -284,7 +284,7 @@ public class UserBookings extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Table is not available at the selected date and time.");
                 btnUpdate.setEnabled(false);
             } else {
-                JOptionPane.showMessageDialog(null, "Table is available.");
+                JOptionPane.showMessageDialog(null, "Table is Available.");
                 btnUpdate.setEnabled(true);
             }
         } catch (Exception e) {
@@ -308,16 +308,19 @@ public class UserBookings extends javax.swing.JFrame {
         booking.setDate(formattedDate);
         booking.setTime((String) jComboBoxTime.getSelectedItem());
         
-        BookingDao.update(booking);
-        //setVisible(false);
-        new UserBookings().setVisible(true);
-        //new UserBookings(this.userEmail).setVisible(true);
+        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Update Booking ? ","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            BookingDao.update(booking);
+            //setVisible(false);
+            new UserBookings().setVisible(true);
+            //new UserBookings(this.userEmail).setVisible(true);
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         String id = lblId.getText();
-        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete booking ? ","Select",JOptionPane.YES_NO_OPTION);
+        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete Booking ? ","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             BookingDao.delete(id);
             //setVisible(false);
@@ -368,7 +371,7 @@ public class UserBookings extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
+        int a= JOptionPane.showConfirmDialog(null, "Do you want to Close this ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
             //setVisible(false);
             new Home().setVisible(true);

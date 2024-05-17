@@ -37,7 +37,7 @@ public class AddReservation extends javax.swing.JFrame {
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
         String time = (String) jComboBoxTime.getSelectedItem();
-        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !name.equals("") && !tableNo.equals("") && !date.equals("") && !time.equals(""))
+        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !name.equals("") && !tableNo.equals("") && date != null && !time.equals(""))
             btnCheckAvailability.setEnabled(true);
         else
             btnCheckAvailability.setEnabled(false);
@@ -190,7 +190,7 @@ public class AddReservation extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        int a= JOptionPane.showConfirmDialog(null, "Do you want to close this ?", "Select", JOptionPane.YES_NO_OPTION);
+        int a= JOptionPane.showConfirmDialog(null, "Do you want to Close this ?", "Select", JOptionPane.YES_NO_OPTION);
         if(a==0){
             //setVisible(false);
             new SignIn().setVisible(true);
@@ -221,7 +221,8 @@ public class AddReservation extends javax.swing.JFrame {
         String query = "INSERT INTO booking (name, email, mobile, guests, tableNo, date, time) VALUES ('"
                 + name + "', '" + email + "', '" + mobile + "', '" + guests + "', '" + tableNo + "', '" + formattedDate + "', '" + time + "')";
 
-        DbOperations.setDataOrDelete(query, "Booking added successfully!");
+        DbOperations.setDataOrDelete(query, "Booking Added Successfully !");
+    
         //setVisible(false);
         new SignIn().setVisible(true);
         
@@ -250,7 +251,7 @@ public class AddReservation extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Table is not available at the selected date and time.");
                 btnSave.setEnabled(false);
             } else {
-                JOptionPane.showMessageDialog(null, "Table is available.");
+                JOptionPane.showMessageDialog(null, "Table is Available.");
                 btnSave.setEnabled(true);
             }
         } catch (Exception e) {

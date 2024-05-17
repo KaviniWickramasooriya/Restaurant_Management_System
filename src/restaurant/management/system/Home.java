@@ -81,7 +81,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/restaurant.jpg"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(1366, 768));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 840, 460));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 840, 460));
 
         btnAddBooking.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnAddBooking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new product.png"))); // NOI18N
