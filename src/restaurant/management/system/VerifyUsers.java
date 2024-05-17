@@ -47,7 +47,7 @@ public class VerifyUsers extends javax.swing.JFrame {
      // Method to generate the report
 private void generateReport() {
     Document document = new Document();
-    String filePath = "D:\\Downloads\\Customer_Report.pdf"; // Ensure this path is accessible
+    String filePath = "D:\\Downloads\\Customers_Report.pdf"; // Ensure this path is accessible
     try {
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
         writer.setPageEvent(new HeaderFooterPageEvent());
@@ -56,7 +56,7 @@ private void generateReport() {
         addTitlePage(document);
         addContent(document);
 
-        JOptionPane.showMessageDialog(null, "Report Generated Successfully!");
+        JOptionPane.showMessageDialog(null, "Report Generated Successfully !");
     } catch (DocumentException | IOException e) {
         JOptionPane.showMessageDialog(null, "Error generating report: " + e.getMessage());
     } finally {
@@ -67,7 +67,7 @@ private void generateReport() {
 private void addTitlePage(Document document) throws DocumentException {
     Font titleFont = new Font(Font.FontFamily.TIMES_ROMAN, 20, Font.BOLD, BaseColor.BLUE.darker());
     Font subTitleFont = new Font(Font.FontFamily.TIMES_ROMAN, 14);
-    Paragraph title = new Paragraph("Customer Report", titleFont);
+    Paragraph title = new Paragraph("Customers Report", titleFont);
     title.setAlignment(Element.ALIGN_CENTER);
     document.add(title);
 
@@ -85,7 +85,7 @@ private void addContent(Document document) throws DocumentException {
     table.setWidthPercentage(100);
 
     // Define the widths for each column
-    float[] columnWidths = {0.5f, 1.5f, 1.5f, 1, 1, 1.5f, 0.8f};
+    float[] columnWidths = {0.5f, 1.5f, 1.5f, 1, 1.5f, 1.5f, 0.6f};
     table.setWidths(columnWidths);
 
     String[] headers = {"ID", "Name", "Email", "Contact No.", "Address", "Security Question", "Status"};
@@ -127,14 +127,13 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
             footer.getDefaultCell().setFixedHeight(40);
             footer.getDefaultCell().setBorder(Rectangle.TOP);
             footer.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-            footer.addCell(new Phrase("Restaurant Customer Report - Page " + writer.getPageNumber(), footerFont));
+            footer.addCell(new Phrase("Restaurant Customers Report - Page " + writer.getPageNumber(), footerFont));
             footer.writeSelectedRows(0, -1, 34, 50, writer.getDirectContent());
         } catch (DocumentException de) {
             throw new ExceptionConverter(de);
         }
     }
 }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -157,6 +156,7 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1406, 650));
         setSize(new java.awt.Dimension(1406, 650));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -179,8 +179,8 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
         getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 60, 35, 35));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Search");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 110, 30));
+        jLabel2.setText("Search :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 110, 30));
 
         txtSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -188,7 +188,7 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
                 txtSearchKeyReleased(evt);
             }
         });
-        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 330, 30));
+        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 330, 30));
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -220,7 +220,7 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
                 btnDownloadActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDownload, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 150, -1, -1));
+        getContentPane().add(btnDownload, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1370, 790));

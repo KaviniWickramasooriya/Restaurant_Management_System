@@ -35,6 +35,25 @@ public class ReservationtableDao {
         return arrayList;    
     }
     
+    public static ArrayList<Reservationtable> searchTables(String searchCriteria) {
+        ArrayList<Reservationtable> searchResults = new ArrayList<>();
+        String query = "SELECT * FROM reservationtable WHERE name LIKE '%" + searchCriteria + "%'";
+        ResultSet rs = DbOperations.getData(query);
+
+        try {
+            while (rs.next()) {
+                Reservationtable reservationtable = new Reservationtable();
+                reservationtable.setId(rs.getInt("id"));
+                reservationtable.setName(rs.getString("name"));
+                searchResults.add(reservationtable);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return searchResults;
+    }
+    
     public static void delete(String id){
         String query = "delete from reservationtable where id='"+id+"'";
         DbOperations.setDataOrDelete(query, "Table Deleted Successfully !");
