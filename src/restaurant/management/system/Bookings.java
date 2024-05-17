@@ -56,6 +56,26 @@ public class Bookings extends javax.swing.JFrame {
             btnCheckAvailability.setEnabled(false);
     }
     
+    private void searchBookings(String searchCriteria) {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0); // Clear the table before populating with search results
+
+        ArrayList<Booking> searchResults = BookingDao.searchBookings(searchCriteria);
+
+        for (Booking booking : searchResults) {
+            model.addRow(new Object[] { 
+                booking.getId(), 
+                booking.getName(), 
+                booking.getEmail(), 
+                booking.getMobile(), 
+                booking.getGuests(), 
+                booking.getTableNo(), 
+                booking.getDate(), 
+                booking.getTime() 
+            });
+        }
+    }
+    
     // Method to generate the report
     private void generateReport() {
         Document document = new Document();
@@ -545,7 +565,8 @@ public class Bookings extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDownloadActionPerformed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-
+        String searchCriteria = txtSearch.getText().trim();
+        searchBookings(searchCriteria);
     }//GEN-LAST:event_txtSearchKeyReleased
 
     /**

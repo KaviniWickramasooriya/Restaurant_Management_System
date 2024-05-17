@@ -42,6 +42,31 @@ public class BookingDao {
         return arrayList;    
     }
     
+    public static ArrayList<Booking> searchBookings(String searchCriteria) {
+        ArrayList<Booking> searchResults = new ArrayList<>();
+        String query = "SELECT * FROM booking WHERE id LIKE '%" + searchCriteria + "%' OR name LIKE '%" + searchCriteria + "%' OR email LIKE '%" + searchCriteria + "%'";
+        ResultSet rs = DbOperations.getData(query);
+
+        try {
+            while (rs.next()) {
+                Booking booking = new Booking();
+                booking.setId(rs.getInt("id"));
+                booking.setName(rs.getString("name"));
+                booking.setEmail(rs.getString("email"));
+                booking.setMobile(rs.getString("mobile"));
+                booking.setGuests(rs.getInt("guests"));
+                booking.setTableNo(rs.getString("tableNo"));
+                booking.setDate(rs.getString("date"));
+                booking.setTime(rs.getString("time"));
+                searchResults.add(booking);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return searchResults;
+    }
+    
     public static void update(Booking booking){
         String query = "update booking set name ='"+booking.getName()+"',email ='"+booking.getEmail()+"',mobile ='"+booking.getMobile()+"',guests ='"+booking.getGuests()+"',mobile ='"+booking.getMobile()+"',tableNo ='"+booking.getTableNo()+"',date ='"+booking.getDate()+"',time ='"+booking.getTime()+"' where id ='"+booking.getId()+"'";
         DbOperations.setDataOrDelete(query, "Booking Updated Successfully !");
