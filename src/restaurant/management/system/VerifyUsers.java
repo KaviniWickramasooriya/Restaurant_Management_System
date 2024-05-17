@@ -23,6 +23,7 @@ public class VerifyUsers extends javax.swing.JFrame {
     public VerifyUsers() {
         initComponents();
     }
+    
     public void getAllRecords(String email){
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setRowCount(0);
@@ -49,7 +50,7 @@ public class VerifyUsers extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -83,13 +84,13 @@ public class VerifyUsers extends javax.swing.JFrame {
         jLabel2.setText("Search");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 110, 30));
 
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtEmailKeyReleased(evt);
+                txtSearchKeyReleased(evt);
             }
         });
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 330, 30));
+        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 330, 30));
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -132,10 +133,10 @@ public class VerifyUsers extends javax.swing.JFrame {
         getAllRecords("");
     }//GEN-LAST:event_formComponentShown
 
-    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
-        String email = txtEmail.getText();
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        String email = txtSearch.getText();
         getAllRecords(email);
-    }//GEN-LAST:event_txtEmailKeyReleased
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int index = jTable1.getSelectedRow();
@@ -198,6 +199,6 @@ public class VerifyUsers extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
