@@ -17,6 +17,11 @@ public class UserDao {
         DbOperations.setDataOrDelete(query, "Registered Successfully !! Wait for Admin Approval ! ");
     }
     
+    public static void addUserByAdmin(User user){
+        String query = "insert into user(name,email,mobile,address,password,security,answer,status) values('"+user.getName()+"','"+user.getEmail()+"','"+user.getMobile()+"','"+user.getAddress()+"','"+user.getPassword()+"','"+user.getSecurity()+"','"+user.getAnswer()+"','true')";
+        DbOperations.setDataOrDelete(query, "Registered Successfully !!");
+    }
+    
     public static User login(String email, String password){
         User user = null;
         try{
