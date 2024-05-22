@@ -183,6 +183,11 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 110, 30));
 
         txtSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
@@ -268,6 +273,10 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
         // TODO add your handling code here:
         generateReport();
     }//GEN-LAST:event_btnDownloadActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     /**
      * @param args the command line arguments
