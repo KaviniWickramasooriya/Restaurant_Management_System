@@ -221,7 +221,7 @@ public class Bookings extends javax.swing.JFrame {
                 btnCloseActionPerformed(evt);
             }
         });
-        getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 70, 30, -1));
+        getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 60, 30, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/View Bills & Order Placed Details.png"))); // NOI18N
@@ -321,7 +321,7 @@ public class Bookings extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel11.setText("View Bookings");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 140, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -338,7 +338,7 @@ public class Bookings extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 700, 310));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 720, 380));
 
         btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
@@ -377,11 +377,11 @@ public class Bookings extends javax.swing.JFrame {
                 btnDownloadActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDownload, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, -1, -1));
+        getContentPane().add(btnDownload, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 150, 200, 30));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setText("Search :");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 140, -1, 30));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, 30));
 
         txtSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -389,7 +389,7 @@ public class Bookings extends javax.swing.JFrame {
                 txtSearchKeyReleased(evt);
             }
         });
-        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 140, 90, 30));
+        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 210, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
@@ -458,7 +458,7 @@ public class Bookings extends javax.swing.JFrame {
         String formattedDate = sdf.format(jDateChooser2.getDate());
         booking.setDate(formattedDate);
         booking.setTime((String) jComboBoxTime.getSelectedItem());
-        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Update Booking ? ","Select",JOptionPane.YES_NO_OPTION);
+        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Update this Booking ? ","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             BookingDao.update(booking);
             //setVisible(false);
@@ -536,7 +536,7 @@ public class Bookings extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         String id = lblId.getText();
-        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete Booking ? ","Select",JOptionPane.YES_NO_OPTION);
+        int a = JOptionPane.showConfirmDialog(null,"Do yo want to Delete this Booking ? ","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             BookingDao.delete(id);
             //setVisible(false);

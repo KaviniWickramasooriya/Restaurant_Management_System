@@ -58,4 +58,9 @@ public class ReservationtableDao {
         String query = "delete from reservationtable where id='"+id+"'";
         DbOperations.setDataOrDelete(query, "Table Deleted Successfully !");
     } 
+    
+    public static void update(Reservationtable reservationtable){
+        String query = "update reservationtable set name ='"+reservationtable.getName()+"' where id ='"+reservationtable.getId()+"'";
+        DbOperations.setDataOrDelete(query, "Table Updated Successfully !");
+    }
 }

@@ -38,8 +38,7 @@ public class UserDao {
     }
     
     public static ArrayList<User> getAllRecords(String email){
-        ArrayList<User> arrayList = new ArrayList<>();
-        
+        ArrayList<User> arrayList = new ArrayList<>();       
         try{
             ResultSet rs = DbOperations.getData("select * from user where email like '%"+email+"%'");
             while(rs.next()){
@@ -50,6 +49,7 @@ public class UserDao {
                 user.setMobile(rs.getString("mobile"));
                 user.setAddress(rs.getString("address"));
                 user.setSecurity(rs.getString("security"));
+                user.setAnswer(rs.getString("answer"));
                 user.setStatus(rs.getString("status"));
                 arrayList.add(user);
             }
@@ -66,8 +66,8 @@ public class UserDao {
     }
     
     public static void update(User user){
-        String query = "update user set name ='"+user.getName()+"',email ='"+user.getEmail()+"',mobile ='"+user.getMobile()+"',address ='"+user.getAddress()+"',security ='"+user.getSecurity()+"' where id ='"+user.getId()+"'";
-        DbOperations.setDataOrDelete(query, "Booking Updated Successfully !");
+        String query = "update user set name ='"+user.getName()+"',email ='"+user.getEmail()+"',mobile ='"+user.getMobile()+"',address ='"+user.getAddress()+"',security ='"+user.getSecurity()+"',answer ='"+user.getAnswer()+"' where id ='"+user.getId()+"'";
+        DbOperations.setDataOrDelete(query, "User Details Updated Successfully !");
     }
     
     public static void delete(String id){

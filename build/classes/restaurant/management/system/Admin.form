@@ -138,14 +138,14 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/verify users.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Verify Users"/>
+        <Property name="text" type="java.lang.String" value="User Management"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerifyUsersActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="100" y="100" width="160" height="-1"/>
+          <AbsoluteConstraints x="70" y="100" width="200" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

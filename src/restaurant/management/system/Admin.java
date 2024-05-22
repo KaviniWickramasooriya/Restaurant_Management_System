@@ -91,13 +91,13 @@ public class Admin extends javax.swing.JFrame {
 
         btnVerifyUsers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVerifyUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify users.png"))); // NOI18N
-        btnVerifyUsers.setText("Verify Users");
+        btnVerifyUsers.setText("User Management");
         btnVerifyUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerifyUsersActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVerifyUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 160, -1));
+        getContentPane().add(btnVerifyUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 200, -1));
 
         btnTables.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnTables.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/category.png"))); // NOI18N
