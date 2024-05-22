@@ -64,4 +64,14 @@ public class UserDao {
         String query = "Update user set status='"+status+"' where email ='"+email+"'";
         DbOperations.setDataOrDelete(query, "Status Changed Successfully!!");
     }
+    
+    public static void update(User user){
+        String query = "update user set name ='"+user.getName()+"',email ='"+user.getEmail()+"',mobile ='"+user.getMobile()+"',address ='"+user.getAddress()+"',security ='"+user.getSecurity()+"' where id ='"+user.getId()+"'";
+        DbOperations.setDataOrDelete(query, "Booking Updated Successfully !");
+    }
+    
+    public static void delete(String id){
+        String query = "delete from user where id='"+id+"'";
+        DbOperations.setDataOrDelete(query, "User Deleted Successfully !");
+    } 
 }
