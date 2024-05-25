@@ -39,7 +39,7 @@ public class VerifyUsers extends javax.swing.JFrame {
         while(itr.hasNext()){
             User userObj = itr.next();
             if(!userObj.getEmail().equals("admin@gmail.com")){
-                dtm.addRow(new Object[]{userObj.getId(),userObj.getName(),userObj.getEmail(),userObj.getMobile(),userObj.getAddress(),userObj.getSecurity(),userObj.getStatus()} );                
+                dtm.addRow(new Object[]{userObj.getId(),userObj.getName(),userObj.getEmail(),userObj.getMobile(),userObj.getAddress(),userObj.getSecurity(),userObj.getAnswer(),userObj.getStatus()} );                
             }
         }
     }
@@ -81,11 +81,11 @@ public class VerifyUsers extends javax.swing.JFrame {
 
     private void addContent(Document document) throws DocumentException {
         Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
-        PdfPTable table = new PdfPTable(7); // 7 columns instead of 8 to match column count
+        PdfPTable table = new PdfPTable(8); // 7 columns instead of 8 to match column count
         table.setWidthPercentage(100);
 
         // Define the widths for each column
-        float[] columnWidths = {0.5f, 1.5f, 1.5f, 1, 1.5f, 1.5f, 0.6f};
+        float[] columnWidths = {0.5f, 1.5f, 1.5f, 1, 1.5f, 1.5f, 0.7f};
         table.setWidths(columnWidths);
 
         String[] headers = {"ID", "Name", "Email", "Contact No.", "Address", "Security Question", "Status"};
@@ -201,7 +201,7 @@ public class VerifyUsers extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name", "Email", "Mobile", "Address", "Security Question", "Status"
+                "ID", "Name", "Email", "Mobile", "Address", "Security Question", "Answer", "Status"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {

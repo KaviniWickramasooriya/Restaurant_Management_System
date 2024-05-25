@@ -9,6 +9,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import dao.DbOperations;
 import java.sql.ResultSet;
+import java.util.Calendar;
 
 /**
  *
@@ -28,6 +29,15 @@ public class AddReservation extends javax.swing.JFrame {
         
         // Set the minimum selectable date to today's date
         jDateChooser2.setMinSelectableDate(new Date());
+        
+        // Populate the start time combo box
+        populateStartTimeSlots();
+        
+        // Add event listener to start time combo box
+        jComboBoxStartTime.addActionListener(evt -> updateEndTimeSlots());
+        
+        // Add event listener to date chooser
+        jDateChooser2.addPropertyChangeListener(evt -> updateStartTimeSlots());
     }
     
     public void validateFields(){
@@ -36,11 +46,53 @@ public class AddReservation extends javax.swing.JFrame {
         String mobile = txtMobile.getText();
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
-        String time = (String) jComboBoxTime.getSelectedItem();
-        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !name.equals("") && !tableNo.equals("") && date != null && !time.equals(""))
+        String startTime = (String) jComboBoxStartTime.getSelectedItem();
+        String endTime = (String) jComboBoxEndTime.getSelectedItem();
+        if(email.matches(emailPattern) && mobile.matches(mobilePattern) && mobile.length()==10 && !name.equals("") && !tableNo.equals("") && date != null && !startTime.equals("") && !endTime.equals(""))
             btnCheckAvailability.setEnabled(true);
         else
             btnCheckAvailability.setEnabled(false);
+    }
+    
+    private void populateStartTimeSlots() {
+        jComboBoxStartTime.removeAllItems();
+        for (int i = 8; i <= 19; i++) {
+            String hour = String.format("%02d", i);
+            jComboBoxStartTime.addItem(hour + ":00");
+        }
+    }
+
+    private void updateEndTimeSlots() {
+        String startTime = (String) jComboBoxStartTime.getSelectedItem();
+        if (startTime != null) {
+            jComboBoxEndTime.removeAllItems();
+            int startHour = Integer.parseInt(startTime.split(":")[0]);
+            for (int i = startHour + 1; i <= 20; i++) {
+                String hour = String.format("%02d", i);
+                jComboBoxEndTime.addItem(hour + ":00");
+            }
+        }
+    }
+
+    private void updateStartTimeSlots() {
+        Date selectedDate = jDateChooser2.getDate();
+        Date currentDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String selectedDateString = sdf.format(selectedDate);
+        String currentDateString = sdf.format(currentDate);
+
+        if (selectedDateString.equals(currentDateString)) {
+            Calendar calendar = Calendar.getInstance();
+            int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+            jComboBoxStartTime.removeAllItems();
+            for (int i = Math.max(currentHour + 1, 8); i <= 19; i++) {
+                String hour = String.format("%02d", i);
+                jComboBoxStartTime.addItem(hour + ":00");
+            }
+        } else {
+            populateStartTimeSlots();
+        }
+        updateEndTimeSlots();
     }
     
     /**
@@ -70,7 +122,9 @@ public class AddReservation extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
-        jComboBoxTime = new javax.swing.JComboBox<>();
+        jComboBoxEndTime = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        jComboBoxStartTime = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,57 +152,57 @@ public class AddReservation extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Name :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Email :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Contact Number :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Number of Guests :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Table No :");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Date :");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setText("Time");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 570, -1, -1));
+        jLabel9.setText("End Time :");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, -1, -1));
 
         SpinnerGuests.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
-        getContentPane().add(SpinnerGuests, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 240, -1));
+        getContentPane().add(SpinnerGuests, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 240, -1));
 
-        getContentPane().add(ComboBoxTableNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 240, -1));
+        getContentPane().add(ComboBoxTableNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 240, -1));
 
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNameKeyReleased(evt);
             }
         });
-        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 240, -1));
+        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 240, -1));
 
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtEmailKeyReleased(evt);
             }
         });
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 240, -1));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 240, -1));
 
         txtMobile.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMobileKeyReleased(evt);
             }
         });
-        getContentPane().add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 240, -1));
+        getContentPane().add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 240, -1));
 
         btnCheckAvailability.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCheckAvailability.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/place order.png"))); // NOI18N
@@ -158,7 +212,7 @@ public class AddReservation extends javax.swing.JFrame {
                 btnCheckAvailabilityActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, 190, 30));
+        getContentPane().add(btnCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 650, 190, 30));
 
         btnSave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
@@ -168,18 +222,23 @@ public class AddReservation extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, 90, 30));
+        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 650, 90, 30));
 
         jDateChooser2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jDateChooser2KeyReleased(evt);
             }
         });
-        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, 240, -1));
+        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, 240, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/table.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, -1, -1));
-        getContentPane().add(jComboBoxTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 570, 240, -1));
+        getContentPane().add(jComboBoxEndTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 590, 240, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel11.setText("Start Time : ");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, -1, -1));
+        getContentPane().add(jComboBoxStartTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 530, 240, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/full-page-background.PNG"))); // NOI18N
         jLabel10.setText("jLabel10");
@@ -207,7 +266,9 @@ public class AddReservation extends javax.swing.JFrame {
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
         // Get the selected time slot
-        String time = (String) jComboBoxTime.getSelectedItem();
+        String startTime = (String) jComboBoxStartTime.getSelectedItem();
+        // Get the selected time slot
+        String endTime = (String) jComboBoxEndTime.getSelectedItem();
 
         // Validation
         if (name.isEmpty() || email.isEmpty() || mobile.isEmpty() || date == null ) {
@@ -218,8 +279,8 @@ public class AddReservation extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = sdf.format(date);
 
-        String query = "INSERT INTO booking (name, email, mobile, guests, tableNo, date, time) VALUES ('"
-                + name + "', '" + email + "', '" + mobile + "', '" + guests + "', '" + tableNo + "', '" + formattedDate + "', '" + time + "')";
+        String query = "INSERT INTO booking (name, email, mobile, guests, tableNo, date, startTime, endTime) VALUES ('"
+                + name + "', '" + email + "', '" + mobile + "', '" + guests + "', '" + tableNo + "', '" + formattedDate + "', '" + startTime + "', '"+ endTime + "')";
 
         DbOperations.setDataOrDelete(query, "Booking Added Successfully !");
     
@@ -232,10 +293,10 @@ public class AddReservation extends javax.swing.JFrame {
         // TODO add your handling code here:
         String tableNo = (String) ComboBoxTableNo.getSelectedItem();
         Date date = jDateChooser2.getDate();
-        // Get the selected time slot
-        String time = (String) jComboBoxTime.getSelectedItem();
+        String startTime = (String) jComboBoxStartTime.getSelectedItem();
+        String endTime = (String) jComboBoxEndTime.getSelectedItem();
 
-        if (tableNo == null || date == null) {
+        if (tableNo == null || date == null || startTime == null || endTime == null) {
             JOptionPane.showMessageDialog(null, "Please select a table, date, and time.");
             return;
         }
@@ -243,7 +304,11 @@ public class AddReservation extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = sdf.format(date);
 
-        String query = "SELECT * FROM booking WHERE tableNo = '" + tableNo + "' AND date = '" + formattedDate + "' AND time = '" + time + "'";
+        String query = "SELECT * FROM booking WHERE tableNo = '" + tableNo + "' AND date = '" + formattedDate + "' AND ("
+                + "(startTime <= '" + startTime + "' AND endTime > '" + startTime + "') OR "
+                + "(startTime < '" + endTime + "' AND endTime >= '" + endTime + "') OR "
+                + "(startTime >= '" + startTime + "' AND endTime <= '" + endTime + "'))";
+
         ResultSet rs = DbOperations.getData(query);
 
         try {
@@ -275,8 +340,9 @@ public class AddReservation extends javax.swing.JFrame {
         
         for (int i = 8; i <= 19; i++) {
             String hour = String.format("%02d", i);
-            jComboBoxTime.addItem(hour + ":00");
+            jComboBoxStartTime.addItem(hour + ":00");
         }
+        
     }//GEN-LAST:event_formComponentShown
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
@@ -340,10 +406,12 @@ public class AddReservation extends javax.swing.JFrame {
     private javax.swing.JButton btnCheckAvailability;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> jComboBoxTime;
+    private javax.swing.JComboBox<String> jComboBoxEndTime;
+    private javax.swing.JComboBox<String> jComboBoxStartTime;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

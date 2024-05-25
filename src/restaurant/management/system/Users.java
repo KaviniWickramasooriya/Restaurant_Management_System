@@ -91,11 +91,11 @@ public class Users extends javax.swing.JFrame {
 
     private void addContent(Document document) throws DocumentException {
         Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
-        PdfPTable table = new PdfPTable(7); // 7 columns instead of 8 to match column count
+        PdfPTable table = new PdfPTable(8); // 7 columns instead of 8 to match column count
         table.setWidthPercentage(100);
 
         // Define the widths for each column
-        float[] columnWidths = {0.5f, 1.5f, 1.5f, 1, 1.5f, 1.5f, 1, 0.6f};
+        float[] columnWidths = {0.5f, 1.5f, 1.5f, 1, 1.5f, 1.5f, 1, 0.7f};
         table.setWidths(columnWidths);
 
         String[] headers = {"ID", "Name", "Email", "Contact No.", "Address", "Security Question", "Answer", "Status"};
