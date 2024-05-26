@@ -105,6 +105,16 @@ public class ManageTables extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
 
         txtName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 120, -1));
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
@@ -312,6 +322,15 @@ public class ManageTables extends javax.swing.JFrame {
     private void txtName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtName1ActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+        validateFields();
+    }//GEN-LAST:event_txtNameKeyReleased
 
     /**
      * @param args the command line arguments
