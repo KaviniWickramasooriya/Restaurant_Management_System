@@ -142,7 +142,7 @@ public class Admin extends javax.swing.JFrame {
     private void btnVerifyUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyUsersActionPerformed
         // TODO add your handling code here:
         //setVisible(false);
-        new VerifyUsers().setVisible(true);
+        new Users().setVisible(true);
     }//GEN-LAST:event_btnVerifyUsersActionPerformed
 
     private void btnTablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablesActionPerformed
