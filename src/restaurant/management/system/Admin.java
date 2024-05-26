@@ -78,7 +78,7 @@ public class Admin extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 98, 472, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/restaurant.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, 460));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, 460));
 
         btnBookings.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBookings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view edit delete product.png"))); // NOI18N
