@@ -119,7 +119,7 @@ public class SignUp extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Security Quesction : ");
+        jLabel7.setText("Security Question : ");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, 150, 20));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

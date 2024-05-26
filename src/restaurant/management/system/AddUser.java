@@ -94,7 +94,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel2.setText("Add User");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 220, 31));
 
-        txtName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNameKeyReleased(evt);
@@ -112,7 +112,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel4.setText("Email :");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 70, 30));
 
-        txtEmail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtEmailKeyReleased(evt);
@@ -125,7 +125,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel5.setText("Mobile :");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 119, 30));
 
-        txtMobile.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtMobile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtMobile.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMobileKeyReleased(evt);
@@ -138,7 +138,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel6.setText("Address : ");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 119, 20));
 
-        txtAddress.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtAddress.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtAddressKeyReleased(evt);
@@ -151,7 +151,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel7.setText("Password : ");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 119, 30));
 
-        txtPassword.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPasswordKeyReleased(evt);
@@ -161,10 +161,10 @@ public class AddUser extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Security Quesction : ");
+        jLabel8.setText("Security Question : ");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, 200, 20));
 
-        txtSecurity.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtSecurity.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtSecurity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSecurityKeyReleased(evt);
@@ -177,7 +177,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel9.setText("Answer : ");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 130, -1));
 
-        txtAnswer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtAnswer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtAnswer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtAnswerKeyReleased(evt);
