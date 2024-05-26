@@ -85,10 +85,10 @@ public class VerifyUsers extends javax.swing.JFrame {
         table.setWidthPercentage(100);
 
         // Define the widths for each column
-        float[] columnWidths = {0.5f, 1.5f, 1.5f, 1, 1.5f, 1.5f, 0.7f};
+        float[] columnWidths = {0.5f, 1.5f, 1.5f, 1, 1.5f, 1.5f, 1, 0.7f};
         table.setWidths(columnWidths);
 
-        String[] headers = {"ID", "Name", "Email", "Contact No.", "Address", "Security Question", "Status"};
+        String[] headers = {"ID", "Name", "Email", "Contact No.", "Address", "Security Question", "Answer", "Status"};
         for (String header : headers) {
             PdfPCell cell = new PdfPCell(new Phrase(header, tableHeaderFont));
             BaseColor creamColor = new BaseColor(255, 253, 208);
