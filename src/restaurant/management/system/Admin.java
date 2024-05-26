@@ -39,6 +39,7 @@ public class Admin extends javax.swing.JFrame {
         btnBookings = new javax.swing.JButton();
         btnVerifyUsers = new javax.swing.JButton();
         btnTables = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,17 +88,17 @@ public class Admin extends javax.swing.JFrame {
                 btnBookingsActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBookings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 150, -1));
+        getContentPane().add(btnBookings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 40, 150, -1));
 
         btnVerifyUsers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnVerifyUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify users.png"))); // NOI18N
+        btnVerifyUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
         btnVerifyUsers.setText("User Management");
         btnVerifyUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerifyUsersActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVerifyUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 200, -1));
+        getContentPane().add(btnVerifyUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 220, -1));
 
         btnTables.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnTables.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/category.png"))); // NOI18N
@@ -107,7 +108,17 @@ public class Admin extends javax.swing.JFrame {
                 btnTablesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 100, 150, -1));
+        getContentPane().add(btnTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 100, 150, -1));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify users.png"))); // NOI18N
+        jButton1.setText("Verify Users");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 160, 150, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home-background-image.png"))); // NOI18N
@@ -142,7 +153,7 @@ public class Admin extends javax.swing.JFrame {
     private void btnVerifyUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyUsersActionPerformed
         // TODO add your handling code here:
         //setVisible(false);
-        new VerifyUsers().setVisible(true);
+        new Users().setVisible(true);
     }//GEN-LAST:event_btnVerifyUsersActionPerformed
 
     private void btnTablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablesActionPerformed
@@ -150,6 +161,11 @@ public class Admin extends javax.swing.JFrame {
         //setVisible(false);
         new ManageTables().setVisible(true);
     }//GEN-LAST:event_btnTablesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new VerifyUsers().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +208,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnTables;
     private javax.swing.JButton btnVerifyUsers;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
