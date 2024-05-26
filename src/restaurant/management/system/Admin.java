@@ -88,7 +88,7 @@ public class Admin extends javax.swing.JFrame {
                 btnBookingsActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBookings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 40, 150, -1));
+        getContentPane().add(btnBookings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 40, 150, -1));
 
         btnVerifyUsers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVerifyUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
@@ -108,7 +108,7 @@ public class Admin extends javax.swing.JFrame {
                 btnTablesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 100, 150, -1));
+        getContentPane().add(btnTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 100, 150, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify users.png"))); // NOI18N
@@ -118,7 +118,7 @@ public class Admin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 160, 150, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 160, 150, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home-background-image.png"))); // NOI18N
